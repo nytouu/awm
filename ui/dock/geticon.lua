@@ -15,7 +15,7 @@ local function Get_icon(client, program_string, class_string, is_steam)
       if client.class then
         clientName = string.lower(client.class:gsub(" ", "")) .. ".svg"
       elseif client.name then
-        clientName = string.lower(client.name:gsub(" ", "")) .. ".svg"
+		clientName = string.lower(client.name:gsub(" ", "")) .. ".svg"
       else
         if client.icon then
           return client.icon

@@ -13,7 +13,6 @@ local getlayoutbox = require 'ui.bar.modules.layoutbox'
 -- local powerbutton = require 'ui.bar.modules.powerbutton'
 local battery = require 'ui.bar.modules.battery'
 local profile = require 'ui.bar.modules.profile'
--- local tasklist = require 'ui.bar.modules.tasklist'
 local helpers = require 'helpers'
 
 screen.connect_signal('request::desktop_decoration', function (s)
@@ -30,7 +29,6 @@ screen.connect_signal('request::desktop_decoration', function (s)
         layout = wibox.layout.stack,
         {
             layout = wibox.layout.align.horizontal,
-
             {
                 layout = wibox.layout.fixed.horizontal,
 
@@ -42,7 +40,6 @@ screen.connect_signal('request::desktop_decoration', function (s)
                     left = 12,
                     widget = wibox.container.margin,
                 },
-                -- tasklist
             },
             nil,
             {

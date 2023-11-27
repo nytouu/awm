@@ -58,8 +58,8 @@ client.connect_signal('request::titlebars', function (c)
                 right = 4,
                 left = 14
             }),
+			paddined_button(awful.titlebar.widget.minimizebutton(c)),
             paddined_button(awful.titlebar.widget.maximizedbutton(c)),
-            paddined_button(awful.titlebar.widget.minimizebutton(c)),
             layout = wibox.layout.fixed.horizontal,
         },
         buttons_loader,

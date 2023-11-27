@@ -14,7 +14,7 @@ local function set_keybindings ()
         --           {description = "open or focus a terminal", group = "launcher"}),
         -- awful.key({ modkey, "Control" }, "Return", function () awful.spawn("tabbed alacritty --embed") end,
         --           {description = "open a terminal", group = "launcher"}),
-        awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
+        awful.key({ modkey,           }, "Return", function () awful.spawn("tabbed -c -k -n st -b -r 2 st -w ''") end,
                   {description = "open a terminal", group = "launcher"}),
         awful.key(
             { modkey, "Shift" }, 'd',

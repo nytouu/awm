@@ -239,20 +239,26 @@ local dock = function(s)
 				convert     = "nvim",
 				command     = terminal .. " nvim"
 			},
-			-- {
-			-- 	name        = "st",
-			-- 	convert     = "kitty",
-			-- 	command     = terminal
-			-- },
+			{
+				name        = "tabbed",
+				convert     = "kitty",
+				class 		= "tabbed",
+				command     = "tabbed -c -k -n st -b -r 2 st -w ''",
+			},
 			{
 				name        = "steam",
 				convert     = "steam",
 				command     = "steam-native"
 			},
 			{
+				name        = "neorg",
+				convert     = "notes",
+				command     = terminal .. " -d ~/notes -c neorg nvim +'Neorg workspace notes'"
+			},
+			{
 				name        = "ncmpcpp",
 				convert     = "musique",
-				command     = terminal .. " --class=ncmpcpp --title ncmpcpp ncmpcpp"
+				command     = terminal .. " -c ncmpcpp -T ncmpcpp ncmpcpp"
 			},
 			{
 				name        = "thunar",
@@ -310,8 +316,8 @@ local dock = function(s)
 				count   = 0,
 				id      = 1,
 				clients = {},
-				name    = "st",
-				class   = "st"
+				name    = "tabbed",
+				class   = "tabbed"
 			},
 			{
 				count   = 0,
@@ -359,26 +365,33 @@ local dock = function(s)
 				count   = 0,
 				id      = 8,
 				clients = {},
+				name    = "neorg",
+				class   = "neorg"
+			},
+			{
+				count   = 0,
+				id      = 9,
+				clients = {},
 				name    = "libreoffice",
 				class   = "libreoffice"
 			},
 			{
 				count   = 0,
-				id      = 9,
+				id      = 10,
 				clients = {},
 				name    = "libresprite",
 				class   = "libresprite"
 			},
 			{
 				count   = 0,
-				id      = 10,
+				id      = 11,
 				clients = {},
 				name    = "unityhub",
 				class   = "unityhub"
 			},
 		}
 
-		local classes = { "kitty", "firefox", "discord", "thunar", "ncmpcpp", "steam" }
+		local classes = { "tabbed", "st", "firefox", "discord", "thunar", "neorg", "ncmpcpp", "steam" }
 		local dockElements = wibox.widget { layout = layout, spacing = 8 }
 
 		-- generating the data

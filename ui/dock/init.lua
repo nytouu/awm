@@ -253,7 +253,7 @@ local dock = function(s)
 			{
 				name        = "neorg",
 				convert     = "notes",
-				command     = terminal .. " -d ~/notes -c neorg nvim +'Neorg workspace notes'"
+				command     = terminal .. " -d ~/notes -c neorg nvim +'Neorg workspace notes' ~/notes/index.norg"
 			},
 			{
 				name        = "ncmpcpp",
@@ -391,7 +391,7 @@ local dock = function(s)
 			},
 		}
 
-		local classes = { "tabbed", "st", "firefox", "discord", "thunar", "neorg", "ncmpcpp", "steam" }
+		local classes = { "tabbed", "st", "firefox", "discord", "thunar", "neorg", "ncmpcpp", "steam", "unityhub" }
 		local dockElements = wibox.widget { layout = layout, spacing = 8 }
 
 		-- generating the data

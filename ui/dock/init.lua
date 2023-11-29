@@ -396,7 +396,10 @@ local dock = function(s)
 
 		-- generating the data
 		for _, c in ipairs(clients) do
-			local class = string.lower(c.class)
+            local class = ""
+            if c.class then
+                class = string.lower(c.class)
+            end
 
 			if helpers.inTable(classes, class) then
 				for _, j in pairs(metadata) do

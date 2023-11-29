@@ -68,7 +68,7 @@ theme.actions = {
 -- bar
 theme.bar_height = 28
 
--- gaps and borders
+-- borders
 theme.border_width = dpi(1)
 -- theme.border_color_normal = theme.bg_normal
 -- theme.border_color_active = theme.bg_normal
@@ -80,8 +80,7 @@ theme.border_color  = "#444444"
 theme.border_focus  = "#404040"
 theme.border_marked = "#458588"
 
--- Not recommended to change, because a LOT of widgets are using this value as
--- a margin-reference, please note that if you change this, ALL THE WIDGETS SPACINGS will be changed too!!!
+-- gaps
 theme.useless_gap = dpi(8)
 theme.gap_single_client = false
 

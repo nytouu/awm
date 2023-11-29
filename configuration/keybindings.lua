@@ -95,7 +95,7 @@ local function set_keybindings ()
         {description = "open file browser", group = "launcher"}),
         awful.key({ modkey,           }, "b", function () awful.spawn("firefox") end,
         {description = "open browser", group = "launcher"}),
-        awful.key({ modkey,           }, "m", function () awful.spawn(terminal .. " -c ncmpcpp -n ncmpcpp ncmpcpp") end,
+        awful.key({ modkey, "Shift"   }, "m", function () awful.spawn(terminal .. " -c ncmpcpp -n ncmpcpp ncmpcpp") end,
         {description = "open music", group = "launcher"}),
     })
 
@@ -243,12 +243,12 @@ local function set_keybindings ()
             --         {description = "move to screen", group = "client"}),
             awful.key({ modkey,           }, "s",      function (c) c.sticky = not c.sticky            end,
                     {description = "toggle sticky", group = "client"}),
-            -- awful.key({ modkey,           }, "m",
-            --     function (c)
-            --         c.maximized = not c.maximized
-            --         c:raise()
-            --     end ,
-            --     {description = "(un)maximize", group = "client"}),
+            awful.key({ modkey,           }, "m",
+                function (c)
+                    c.maximized = not c.maximized
+                    c:raise()
+                end ,
+            {description = "(un)maximize", group = "client"}),
             -- awful.key({ modkey, "Control" }, "m",
             --     function (c)
             --         c.maximized_vertical = not c.maximized_vertical

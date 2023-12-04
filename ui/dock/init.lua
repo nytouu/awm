@@ -253,7 +253,7 @@ local dock = function(s)
 			{
 				name        = "neorg",
 				convert     = "notes",
-				command     = terminal .. " -d ~/notes -c neorg nvim +'Neorg workspace notes' ~/notes/index.norg"
+				command     = terminal .. " -d ~/notes/classes -c neorg nvim +'Neorg workspace default' ~/notes/classes/index.norg"
 			},
 			{
 				name        = "ncmpcpp",

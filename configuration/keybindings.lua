@@ -241,8 +241,10 @@ local function set_keybindings ()
                     {description = "move to master", group = "client"}),
             -- awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
             --         {description = "move to screen", group = "client"}),
-            awful.key({ modkey,           }, "s",      function (c) c.sticky = not c.sticky            end,
+            awful.key({ modkey,           }, "s",      function (c) c.sticky = not c.sticky end,
                     {description = "toggle sticky", group = "client"}),
+            awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop end,
+                    {description = "toggle on top", group = "client"}),
             awful.key({ modkey,           }, "m",
                 function (c)
                     c.maximized = not c.maximized

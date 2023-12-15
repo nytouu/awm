@@ -15,9 +15,12 @@ local titlebar_assets_path = assets_path .. "titlebar/"
 
 local theme = {}
 
+theme.user= "nytou"
+
 -- fonts
 theme.font_name = 'Torus Pro'
 theme.nerd_font = 'FantasqueSansM Nerd Font'
+theme.mono_font = 'IBM Plex Mono'
 theme.material_icons = 'Material Icons'
 theme.font_size = '10'
 theme.font = theme.font_name .. ' ' .. theme.font_size
@@ -41,6 +44,9 @@ theme.bg_darker     = "#101010"
 theme.bg_normal     = "#000000"
 theme.bg_contrast   = "#0f0f0f"
 theme.bg_lighter    = "#111111"
+
+theme.bg_titlebar	= "#292522"
+theme.bg_title_alt	= "#292522"
 
 -- elements bg
 theme.bg_focus      = theme.bg_normal
@@ -109,8 +115,8 @@ theme.menu_width = dpi(180)
 theme.menu_bg_focus = theme.bg_lighter
 
 -- titlebar
-theme.titlebar_bg = theme.bg_contrast
-theme.titlebar_bg_focus = theme.bg_normal
+theme.titlebar_bg = theme.bg_titlebar
+theme.titlebar_bg_focus = theme.bg_title_alt
 theme.titlebar_fg = theme.fg_normal
 
 -- close
@@ -163,6 +169,7 @@ theme.network_disconnected = '󰖪 '
 
 -- pfp
 theme.pfp = '~/pics/nytouu.png'
+theme.nixos = assets_path .. 'nixos.png'
 
 -- fallback music
 theme.fallback_music = assets_path .. 'fallback-music.png'

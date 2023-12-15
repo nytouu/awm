@@ -27,6 +27,7 @@ local dock = function(s)
 		screen    = s,
 		height    = 100,
 		width     = 600,
+		type = "dock",
 		placement = function(c) placeDock(c, 10) end,
 		shape     = helpers.mkroundedrect(10)
 	}
@@ -241,14 +242,24 @@ local dock = function(s)
 			},
 			{
 				name        = "tabbed",
-				convert     = "kitty",
+				convert     = "terminal",
 				class 		= "tabbed",
 				command     = "tabbed -c -k -n st -b -r 2 st -w ''",
 			},
 			{
 				name        = "steam",
 				convert     = "steam",
-				command     = "steam-native"
+				command     = "steam"
+			},
+			{
+				name        = "osu!",
+				convert     = "osu-lazer",
+				command     = "osu-lazer"
+			},
+			{
+				name        = "Unity",
+				convert     = "unityhub",
+				command     = "unityhub"
 			},
 			{
 				name        = "neorg",
@@ -257,12 +268,17 @@ local dock = function(s)
 			},
 			{
 				name        = "ncmpcpp",
-				convert     = "musique",
+				convert     = "io.bassi.Amberol",
 				command     = terminal .. " -c ncmpcpp -T ncmpcpp ncmpcpp"
 			},
 			{
 				name        = "thunar",
 				convert     = "folder_doc_q4os_startmenu",
+				command     = "thunar"
+			},
+			{
+				name        = "connman-gtk",
+				convert     = "network-defaultroute",
 				command     = "thunar"
 			},
 		}
@@ -337,16 +353,16 @@ local dock = function(s)
 				count   = 0,
 				id      = 4,
 				clients = {},
-				name    = "nvim",
-				class   = "nvim"
+				name    = "ncmpcpp",
+				class   = "ncmpcpp"
 			},
-			{
-				count   = 0,
-				id      = 5,
-				clients = {},
-				name    = "discord",
-				class   = "discord"
-			},
+            {
+                count   = 0,
+                id      = 5,
+                clients = {},
+                name    = "discord",
+                class   = "discord"
+            },
 			{
 				count   = 0,
 				id      = 6,
@@ -358,40 +374,61 @@ local dock = function(s)
 				count   = 0,
 				id      = 7,
 				clients = {},
-				name    = "ncmpcpp",
-				class   = "ncmpcpp"
+				name    = "osu-lazer",
+				class   = "osu-lazer"
 			},
 			{
 				count   = 0,
 				id      = 8,
 				clients = {},
-				name    = "neorg",
-				class   = "neorg"
+				name    = "aseprite",
+				class   = "aseprite"
 			},
 			{
 				count   = 0,
 				id      = 9,
 				clients = {},
-				name    = "libreoffice",
-				class   = "libreoffice"
+				name    = "gimp",
+				class   = "Gimp"
 			},
 			{
 				count   = 0,
 				id      = 10,
 				clients = {},
-				name    = "libresprite",
-				class   = "libresprite"
+				name    = "blender",
+				class   = "Blender"
 			},
 			{
 				count   = 0,
 				id      = 11,
+				clients = {},
+				name    = "lmms",
+				class   = "lmms"
+			},
+			{
+				count   = 0,
+				id      = 12,
+				clients = {},
+				name    = "neorg",
+				class   = "neorg"
+			},
+            {
+                count   = 0,
+                id      = 13,
+                clients = {},
+                name    = "libreoffice",
+                class   = "libreoffice"
+            },
+			{
+				count   = 0,
+				id      = 14,
 				clients = {},
 				name    = "unityhub",
 				class   = "unityhub"
 			},
 		}
 
-		local classes = { "tabbed", "st", "firefox", "discord", "thunar", "neorg", "ncmpcpp", "steam", "unityhub" }
+		local classes = { "tabbed", "st", "firefox", "discord", "thunar", "neorg", "ncmpcpp", "steam", "unityhub", "Unity", "gimp", "blender", "lmms", "aseprite", "osu!" }
 		local dockElements = wibox.widget { layout = layout, spacing = 8 }
 
 		-- generating the data

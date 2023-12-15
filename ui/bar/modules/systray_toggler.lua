@@ -4,7 +4,7 @@ local beautiful = require 'beautiful'
 local awful = require 'awful'
 
 local toggler = wibox.widget {
-    markup = '',
+    markup = '  ',
     align = 'center',
     font = beautiful.nerd_font .. ' 8',
     widget = wibox.widget.textbox
@@ -18,9 +18,9 @@ toggler:add_button(awful.button({}, 1, function ()
     awesome.emit_signal('systray::toggle')
 
     if gtray().popup.visible then
-        toggler:set_markup_silently('')
+        toggler:set_markup_silently('  ')
     elseif gtray().popup.visible == false then
-        toggler:set_markup_silently('')
+        toggler:set_markup_silently('  ')
     end
 end))
 

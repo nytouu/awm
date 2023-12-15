@@ -1,34 +1,21 @@
----@diagnostic disable: undefined-global
-local awful = require 'awful'
-local gears = require 'gears'
-local helpers = require 'helpers'
-local fs = gears.filesystem
+local awful = require('awful')
+local gears = require('gears')
 
-local bluetooth = {}
-
-bluetooth.script_path = fs.get_configuration_dir() .. 'scripts/bluetooth'
-
-function bluetooth._invoke_script(args, cb)
-    awful.spawn.easy_async_with_shell(bluetooth.script_path .. ' ' .. args, function (out)
-        if cb then
-            cb(helpers.trim(out))
-        end
+local function emit_bluetooth_status()
+  awful.spawn.easy_async_with_shell(
+    "sh -c 'bluetoothctl show | grep -i powered:'", function(stdout)
+      local status = stdout:match("yes") -- boolean
+      awesome.emit_signal('signal::bluetooth', status)
     end)
 end
 
-function bluetooth.toggle()
-    bluetooth._invoke_script('toggle')
-end
-
+-- Refreshing
+-------------
 gears.timer {
-    timeout = 5,
-    call_now = true,
-    autostart = true,
-    callback = function ()
-        bluetooth._invoke_script('state', function (state)
-            awesome.emit_signal('bluetooth::enabled', state == 'on')
-        end)
-    end
+  timeout   = 2,
+  call_now  = true,
+  autostart = true,
+  callback  = function()
+    emit_bluetooth_status()
+  end
 }
-
-return bluetooth

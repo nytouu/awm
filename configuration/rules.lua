@@ -25,6 +25,21 @@ local function setup_rules ()
             }
         }
         ruled.client.append_rule {
+            rule_any = {
+                class = {
+                    "Nemo-desktop"
+                },
+                name = {
+                    "Desktop"
+                }
+            },
+            properties = {
+                focusable = false,
+                fullscreen = true,
+                sticky = true,
+            }
+        }
+        ruled.client.append_rule {
             id       = "floating",
             rule_any = {
                 instance = { "copyq", "pinentry" },

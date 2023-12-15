@@ -1,7 +1,10 @@
 local bling = require 'modules.bling'
 local beautiful = require('beautiful')
 local naughty = require 'naughty'
-local playerctl = bling.signal.playerctl.lib()
+local playerctl = bling.signal.playerctl.lib{
+	ignore = "firefox",
+    player = {"mpd", "%any"}
+}
 
 local function notif(title, artist, album_path)
     local previous = naughty.action { name = "PRV" }

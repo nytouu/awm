@@ -3,5 +3,9 @@
     "workspace.library": "/usr/local/share/awesome/lib",
     "diagnostics": {
         "enable": true
-    }
+    },
+    "diagnostics.globals": [
+        "vim",
+        "awesome"
+    ]
 }

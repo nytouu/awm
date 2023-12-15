@@ -12,7 +12,7 @@ local hour = wibox.widget {
 }
 
 local minutes = wibox.widget {
-    format = ':%M ',
+    format = ' %M ',
     align = 'center',
     font = beautiful.font_name .. ' 13',
     widget = wibox.widget.textclock,

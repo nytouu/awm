@@ -1,100 +1,61 @@
-local awful = require 'awful'
-local beautiful = require 'beautiful'
-local wibox = require 'wibox'
-local rubato = require 'modules.rubato'
+local awful = require("awful")
+local beautiful = require("beautiful")
+local dpi = beautiful.xresources.apply_dpi
+local helpers = require("helpers")
+local wibox = require("wibox")
+local gears = require("gears")
 
--- call opening listeners
-require 'ui.dashboard.listener'
+local profile = require("ui.dashboard.modules.profile")
+local pomodoro = require("ui.dashboard.modules.pomodoro")
+-- local quote = require("ui.dashboard.modules.quote")
 
-awful.screen.connect_for_each_screen(function (s)
-    s.dashboard = {}
+local song = require("ui.dashboard.modules.song")
+local todo = require("ui.dashboard.modules.todo")
 
-    local width = 530
-    local stop_offset = width - 5
+local time = require("ui.dashboard.modules.time")
+local nf = require("ui.dashboard.modules.nf")
+-- local weather = require("ui.dashboard.modules.weather")
 
-    s.dashboard.popup = wibox {
-        screen = s,
-        ontop = true,
-        visible = false,
-        bg = beautiful.bg_normal .. '00',
-        fg = beautiful.fg_normal,
-        width = 1,
-        height = s.geometry.height - beautiful.useless_gap * 3 - beautiful.bar_height,
-        x = s.geometry.x + beautiful.useless_gap,
-        y = s.geometry.y + beautiful.useless_gap + beautiful.bar_height + beautiful.useless_gap,
-    }
+awful.screen.connect_for_each_screen(function(s)
+  local dashboard = wibox({
+    shape = helpers.mkroundedrect(12),
+    screen = s,
+    width = 1300,
+    height = 600,
+    bg = beautiful.bg_normal,
+    ontop = true,
+    visible = false,
+  })
 
-    local null_widget = {
-        {
-            markup = '',
-            widget = wibox.widget.textbox,
-        },
-        bg = beautiful.bg_normal,
-        widget = wibox.container.background,
-    }
-
-    local content = require 'ui.dashboard.content'
-
-    s.dashboard.popup:setup(content)
-
-    local self = s.dashboard.popup
-
-    self.status = 'undefined'
-
-    self.animate = rubato.timed {
-        duration = 0.25,
-        rate = 120,
-        override_dt = true
-    }
-
-    -- local function update_struts(factor)
-    --     if beautiful.dashboard_update_struts then
-    --         self:struts {
-    --             left = beautiful.bar_height + (factor or 0)
-    --         }
-    --     end
-    -- end
-
-    self.animate:subscribe(function (animfactor)
-        local function do_anim()
-            self.width = animfactor
-            -- update_struts(animfactor + beautiful.useless_gap * 2)
-            if animfactor <= stop_offset then
-                self:setup(null_widget)
-            else
-                self:setup(content)
-            end
-        end
-
-        local function hide()
-            -- update_struts(0)
-            self.visible = false
-            self.status = 'undefined'
-        end
-
-        if self.status ~= 'undefined' then
-            if animfactor > 0 then do_anim() end
-            if self.status == 'closing' and animfactor < 1 then hide()
-            elseif self.status == 'closing' and not self.animate.running then hide () end
-        end
-    end)
-
-    function s.dashboard.open()
-        self.status = 'opening'
-        self.visible = true
-        self.animate.target = width
-    end
-
-    function s.dashboard.hide()
-        self.status = 'closing'
-        self.animate.target = 0
-    end
-
-    function s.dashboard.toggle()
-        if self.visible then
-            s.dashboard.hide()
-        else
-            s.dashboard.open()
-        end
-    end
+  dashboard:setup {
+    {
+      {
+        profile,
+        pomodoro,
+        -- quote,
+        layout = wibox.layout.align.vertical,
+      },
+      {
+        nil,
+        todo,
+        song,
+        layout = wibox.layout.align.vertical,
+      },
+      {
+        time,
+        nf,
+        -- weather,
+        spacing = 20,
+        layout = wibox.layout.fixed.vertical,
+      },
+      spacing = 20,
+      layout = wibox.layout.flex.horizontal,
+    },
+    widget = wibox.container.margin,
+    margins = 20,
+  }
+  awful.placement.centered(dashboard, { honor_workarea = true, margins = 20 })
+  awesome.connect_signal("toggle::dashboard", function()
+    dashboard.visible = not dashboard.visible
+  end)
 end)

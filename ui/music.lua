@@ -6,7 +6,10 @@ local beautiful = require("beautiful")
 local ruled     = require("ruled")
 local bling     = require("modules.bling")
 local helpers   = require("helpers")
-local playerctl = bling.signal.playerctl.lib()
+local playerctl = bling.signal.playerctl.lib{
+	ignore = "firefox",
+    player = {"mpd", "%any"}
+}
 local dpi       = beautiful.xresources.apply_dpi
 
 
@@ -56,7 +59,7 @@ local next       = wibox.widget {
 local play       = wibox.widget {
   align = 'center',
   font = beautiful.nerd_font .. " 24",
-  markup = helpers.colorize_text('󰐊', beautiful.blue),
+  markup = helpers.colorize_text(' 󰐊 ', beautiful.blue),
   widget = wibox.widget.textbox,
   buttons = {
     awful.button({}, 1, function()
@@ -124,14 +127,14 @@ local songname = wibox.widget {
   align = 'left',
   valign = 'center',
   forced_width = dpi(40),
-  font = beautiful.font .. " 12",
+  font = beautiful.font_name .. " 12",
   widget = wibox.widget.textbox
 }
 local leftname = wibox.widget {
   markup = helpers.colorize_text('Nothing Playing', beautiful.fg_normal),
   valign = 'center',
   align = 'center',
-  font = beautiful.font .. " 16",
+  font = beautiful.font_name .. " 16",
   widget = wibox.widget.textbox
 }
 local artistname = wibox.widget {
@@ -139,7 +142,7 @@ local artistname = wibox.widget {
   align = 'left',
   valign = 'center',
   forced_height = dpi(20),
-  font = beautiful.font .. " 11",
+  font = beautiful.font_name .. " 11",
   widget = wibox.widget.textbox
 }
 local leftartist = wibox.widget {
@@ -147,7 +150,7 @@ local leftartist = wibox.widget {
   align = 'center',
   valign = 'center',
   forced_height = dpi(20),
-  font = beautiful.font .. " 11",
+  font = beautiful.font_name .. " 11",
   widget = wibox.widget.textbox
 }
 local is_prog_hovered = false
@@ -187,7 +190,7 @@ end)
 
 
 playerctl:connect_signal("playback_status", function(_, playing)
-  play.markup = playing and helpers.colorize_text("󰏤", beautiful.blue) or helpers.colorize_text("󰐊", beautiful.blue)
+  play.markup = playing and helpers.colorize_text(" 󰏤 ", beautiful.blue) or helpers.colorize_text(" 󰐊 ", beautiful.blue)
 end)
 local createTopButton = function(c, icon, click, color)
   local widget = wibox.widget {
@@ -208,19 +211,19 @@ local createTopButton = function(c, icon, click, color)
     buttons = awful.button({}, 1, function()
       helpers.click_key(c, click)
     end),
-    bg = beautiful.bg,
+    bg = beautiful.dimblack,
     widget = wibox.container.background
   }
   return widget
 end
 
 local bottom = function(c)
-  local playtab = createTopButton(c, '󰲸 ', '1', beautiful.blue)
-  local vistab = createTopButton(c, '󰐰 ', '8', beautiful.blue)
+  local playtab = createTopButton(c, '󰲸 ', 'shift+1', beautiful.blue)
+  local vistab = createTopButton(c, '󰐰 ', 'shift+8', beautiful.blue)
   vistab:add_button(awful.button({}, 3, function()
-    helpers.click_key(c, '8 ')
+    helpers.click_key(c, '8')
   end))
-  awful.titlebar(c, { position = "bottom", size = dpi(100), bg = beautiful.bg }):setup {
+  awful.titlebar(c, { position = "bottom", size = dpi(100), bg = beautiful.dimblack }):setup {
     slider,
     {
       {
@@ -257,7 +260,7 @@ local bottom = function(c)
               margins = 4,
               widget = wibox.container.margin
             },
-            shape = helpers.mkroundedrect(3),
+            shape = helpers.mkroundedrect(12),
             bg = beautiful.blue .. '11',
             widget = wibox.container.background
           },
@@ -284,7 +287,7 @@ end
 
 
 local left         = function(c)
-  awful.titlebar(c, { position = 'left', size = dpi(320), bg = beautiful.bg }):setup {
+  awful.titlebar(c, { position = 'left', size = dpi(320), bg = beautiful.dimblack }):setup {
     {
       leftart,
       widget = wibox.container.place,
@@ -295,93 +298,10 @@ local left         = function(c)
     widget = wibox.container.background
   }
 end
-local animation    = require("modules.rubato")
-
-local typee        = beautiful.titlebarType
-
-local createButton = function(c, col, fn)
-  local btn = wibox.widget {
-    forced_width  = 16,
-    forced_height = 18,
-    bg            = col,
-    shape         = helpers.mkroundedrect(10),
-    buttons       = {
-      awful.button({}, 1, function()
-        fn(c)
-      end)
-    },
-    widget        = wibox.container.background
-  }
-  return btn
-end
-local top          = function(c)
-  local close = createButton(c, beautiful.err, function(c1)
-    c1:kill()
-  end)
-  local buttons = gears.table.join(
-    awful.button({}, 1, function()
-      client.focus = c
-      c:raise()
-      awful.mouse.client.move(c)
-    end),
-    awful.button({}, 3, function()
-      client.focus = c
-      c:raise()
-      awful.mouse.client.resize(c)
-    end)
-  )
-
-  awful.titlebar(c,
-    {
-      position = 'top',
-      size     = 45,
-      bg       = beautiful.bg2
-    }):setup {
-
-    {
-      {
-        {
-          close,
-          spacing = dpi(8),
-          layout = wibox.layout.fixed.horizontal
-        },
-        widget = wibox.container.margin,
-        margins = {
-          top = 13.5,
-          bottom = 13.5,
-        }
-      },
-      {
-        -- Middle
-        buttons = buttons,
-        widget = wibox.container.place,
-        halign = 'center',
-      },
-      {
-        markup = helpers.colorize_text('SYMPHONY', beautiful.fg_normal),
-        align = 'center',
-        valign = 'center',
-        forced_height = dpi(20),
-        font = beautiful.font .. " 14",
-        widget = wibox.widget.textbox
-      },
-      nil,
-      layout = wibox.layout.align.horizontal
-    },
-    margins = {
-      top = 0,
-      bottom = 0,
-      right = 10,
-      left = 10,
-    },
-    widget = wibox.container.margin
-  }
-end
 
 local final        = function(c)
   bottom(c)
-  -- top(c)
-  -- left(c)
+  left(c)
 end
 
 
@@ -390,7 +310,6 @@ ruled.client.connect_signal("request::rules", function()
     id       = "music",
     rule_any = {
       class = { "ncmpcpp" },
-      -- role  = { "pop-up" },
     },
     callback = final
   }

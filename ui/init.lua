@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 require 'ui.notifications'
 require 'ui.wallpaper'
 require 'ui.menu'
@@ -5,10 +6,10 @@ require 'ui.menu'
 require 'ui.bar'
 require 'ui.systray'
 require 'ui.dashboard'
-require 'ui.notifcenter'
+-- require 'ui.notifcenter'
 require 'ui.powermenu'
 require 'ui.calendar'
-require 'ui.screenshot-center'
-
 require 'ui.dock'
 require 'ui.music'
+require 'ui.lock'
+require 'ui.control'

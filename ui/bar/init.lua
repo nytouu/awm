@@ -5,6 +5,7 @@ local awful = require 'awful'
 
 -- local launchers = require 'ui.bar.modules.launchers'
 local gettaglist = require 'ui.bar.modules.tags'
+local gettasklist = require 'ui.bar.modules.tasklist'
 local systray_toggler = require 'ui.bar.modules.systray_toggler'
 -- local dashboard_toggler = require 'ui.bar.modules.dashboard_toggler'
 local actions = require 'ui.bar.modules.actions'
@@ -13,6 +14,7 @@ local getlayoutbox = require 'ui.bar.modules.layoutbox'
 -- local powerbutton = require 'ui.bar.modules.powerbutton'
 local battery = require 'ui.bar.modules.battery'
 local profile = require 'ui.bar.modules.profile'
+local music = require 'ui.bar.modules.music'
 local helpers = require 'helpers'
 
 screen.connect_signal('request::desktop_decoration', function (s)
@@ -30,44 +32,52 @@ screen.connect_signal('request::desktop_decoration', function (s)
         {
             layout = wibox.layout.align.horizontal,
             {
-                layout = wibox.layout.fixed.horizontal,
-
-                profile,
-                widget = wibox.container.margin,
-                left = 12,
-                {
-                    clock,
-                    left = 12,
-                    widget = wibox.container.margin,
-                },
+				{
+					profile,
+					widget = wibox.container.margin,
+				},
+				getlayoutbox(s),
+				-- {
+				-- 	gettasklist(s),
+				-- 	align  = "center",
+				-- 	widget = wibox.container.place
+				-- },
+				layout = wibox.layout.align.horizontal,
+				widget = wibox.container.place,
             },
             nil,
             {
                 {
                     {
                         systray_toggler,
-                        -- dashboard_toggler,
                         spacing = 9,
-                        layout = wibox.layout.fixed.horizontal,
-                    },
-                    {
-                        actions,
+                        right = 4,
                         widget = wibox.container.margin,
                     },
+					{
+						music,
+                        right = 8,
+						-- top = 4,
+						-- bottom = 4,
+						widget = wibox.container.margin,
+					},
+					{
+						{
+							battery,
+							layout = wibox.container.place,
+						},
+						spacing = 2,
+						widget = wibox.container.margin,
+					},
                     {
-                        {
-                            battery,
-                            layout = wibox.container.place,
-                        },
-                        getlayoutbox(s),
-                        -- powerbutton,
-                        spacing = 2,
-                        layout = wibox.layout.fixed.horizontal,
+                        clock,
+						left = 8,
+                        widget = wibox.container.margin,
                     },
                     layout = wibox.layout.fixed.horizontal,
                 },
-                left = 5,
-                right = 14,
+                left = 4,
+                right = 12,
                 widget = wibox.container.margin,
             },
         },
@@ -80,9 +90,9 @@ screen.connect_signal('request::desktop_decoration', function (s)
                     valign = 'center',
                 },
                 widget = wibox.container.background,
-                forced_height = 26,
-                forced_width = s.geometry.width / 10,
-                shape = helpers.mkroundedrect(8),
+                forced_height = 24,
+                forced_width = s.geometry.width / 8,
+                shape = helpers.mkroundedrect(24),
                 bg = beautiful.dimblack,
                 fg = beautiful.dimblack,
             },
@@ -99,7 +109,7 @@ screen.connect_signal('request::desktop_decoration', function (s)
 
     local bar = awful.popup {
         visible = true,
-        ontop = false,
+        ontop = true,
         minimum_width = s.geometry.width,
         minimum_height = beautiful.bar_height,
         bg = beautiful.bg_normal,
@@ -116,6 +126,19 @@ screen.connect_signal('request::desktop_decoration', function (s)
         -- end,
     }
 
+	local function toggle_ontop(c)
+		if c.fullscreen then
+			bar.ontop = false
+		else
+			bar.ontop = true
+		end
+	end
+
+	client.connect_signal("manage", toggle_ontop)
+	client.connect_signal("focus", toggle_ontop)
+	client.connect_signal("property::floating", toggle_ontop)
+	client.connect_signal("property::fullscreen", toggle_ontop)
+
     bar:struts {
         top = beautiful.bar_height + beautiful.useless_gap,
         -- top = beautiful.bar_height + beautiful.useless_gap * 2,
@@ -124,3 +147,4 @@ screen.connect_signal('request::desktop_decoration', function (s)
 		-- right = beautiful.useless_gap
     }
 end)
+

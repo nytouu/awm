@@ -1,64 +1,4 @@
--- ---@diagnostic disable: undefined-global
--- local wibox = require("wibox")
--- local helpers = require("helpers")
--- local beautiful = require("beautiful")
--- -- local awful = require("awful")
--- local gears = require("gears")
---
--- local battery = wibox.widget {
---     {
---         max_value        = 100,
---         value            = 69,
---         id               = "prog",
---         forced_height    = 20,
---         forced_width     = 35,
---         paddings         = 3,
---         border_color     = beautiful.fg_normal .. "99",
---         background_color = beautiful.bg_normal,
---         bar_shape        = helpers.mkroundedrect(3),
---         -- bar_shape        = gears.shape.rectangle,
---         color            = beautiful.blue,
---         border_width     = 1.25,
---         shape            = helpers.mkroundedrect(5),
---         widget           = wibox.widget.progressbar
---     },
---     {
---         {
---             bg = beautiful.fg_normal .. "99",
---             forced_height = 10,
---             forced_width = 2,
---             shape = helpers.mkroundedrect(10),
---             widget = wibox.container.background,
---         },
---         widget = wibox.container.place,
---         valign = "center",
---     },
---     spacing = 3,
---     layout = wibox.layout.fixed.horizontal
--- }
---
--- awesome.connect_signal("signal::battery", function(value, status)
---     local b = battery:get_children_by_id("prog")[1]
---     b.value = value
--- 	b.status = status
---     if value > 80 then
---         b.color = beautiful.green
---     elseif value > 20 then
---         b.color = beautiful.blue
---     else
---         b.color = beautiful.red
---     end
---
--- 	if b.status == "Charging" then
--- 		b.color = beautiful.yellow
--- 	end
--- end)
---
--- return battery
-
-
 ---@diagnostic disable: undefined-global
-local gears     = require('gears')
 local wibox     = require("wibox")
 local beautiful = require("beautiful")
 local helpers   = require("helpers")
@@ -77,6 +17,16 @@ local battery   = wibox.widget {
 	shape         = helpers.mkroundedrect(4),
 }
 
+local text = wibox.widget {
+	id = "text",
+	font   = beautiful.font_name .. "16",
+	markup = helpers.colorize_text("󱐋", beautiful.bg_normal),
+	widget = wibox.widget.textbox,
+	border_width     = 1.25,
+	valign = "center",
+	align  = "center"
+}
+
 -- le batterie widgetté
 local batstatus = wibox.widget {
 	{
@@ -85,15 +35,7 @@ local batstatus = wibox.widget {
 				{
 					battery,
 					{
-						{
-							id = "text",
-							font   = beautiful.font_name .. "16",
-							markup = helpers.colorize_text("󱐋", beautiful.bg_normal),
-							widget = wibox.widget.textbox,
-							border_width     = 1.25,
-							valign = "center",
-							align  = "center"
-						},
+						text,
 						direction = "east",
 						widget    = wibox.container.rotate
 					},
@@ -136,18 +78,23 @@ awesome.connect_signal("signal::battery", function(value, state)
 	b.state = state
 	b.value = value
 	if state then
+		text.markup = helpers.colorize_text("󱐋", beautiful.bg_normal)
 		b.color = beautiful.green
 		b.background_color = beautiful.green .. '80'
 	elseif value < 20 then
+		text.markup = helpers.colorize_text(" ", beautiful.bg_normal)
 		b.color = beautiful.red
 		b.background_color = beautiful.red .. '80'
 	elseif value < 40 then
+		text.markup = helpers.colorize_text(" ", beautiful.bg_normal)
 		b.color = beautiful.orange
 		b.background_color = beautiful.orange .. '80'
 	elseif value < 60 then
+		text.markup = helpers.colorize_text(" ", beautiful.bg_normal)
 		b.color = beautiful.yellow
 		b.background_color = beautiful.yellow .. '80'
 	else
+		text.markup = helpers.colorize_text(" ", beautiful.bg_normal)
 		b.color = beautiful.green
 		b.background_color = beautiful.green .. '80'
 	end

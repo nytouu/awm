@@ -7,7 +7,7 @@ local function set_keybindings ()
                   {description = "reload awesome", group = "awesome"}),
         awful.key({ modkey, "Shift"   }, "e",
             function ()
-                awesome.emit_signal('powermenu::toggle')
+                awesome.emit_signal('toggle::exit')
             end,
             {description = "quit awesome", group = "awesome"}),
         -- awful.key({ modkey,           }, "Return", function () awful.spawn("sh -c 'wmctrl -x -a tabbed || tabbed alacritty --embed'") end,
@@ -19,10 +19,15 @@ local function set_keybindings ()
         awful.key(
             { modkey, "Shift" }, 'd',
             function ()
-                awesome.emit_signal('dashboard::toggle')
+                awesome.emit_signal('toggle::dashboard')
             end,
             { description = 'toggle the dashboard', group = 'launcher '}
         ),
+        awful.key({ modkey,         }, "c",
+            function ()
+                awesome.emit_signal('toggle::control')
+            end,
+        {description = "toggle control", group = "launcher"}),
         awful.key(
             { modkey, "Shift" }, 'n',
             function ()
@@ -67,17 +72,16 @@ local function set_keybindings ()
         {description = "screenshot", group = "utils"}),
         awful.key({ modkey, "Shift" }, "p", function () awful.spawn("takescreenshot slop") end,
         {description = "slop screenshot", group = "utils"}),
-        awful.key({ }, "XF86MonBrightnessDown", function () awful.spawn("doas /nix/store/34hpwippmxarhm4d2d2n5zz6v487s0mh-system-path/bin/light -U 2") end,
+        awful.key({ }, "XF86MonBrightnessDown", function () awful.spawn("brightnessctl s -3") end,
         {description = "reduce brightness", group = "utils"}),
-        awful.key({ }, "XF86MonBrightnessUp", function () awful.spawn("doas /nix/store/34hpwippmxarhm4d2d2n5zz6v487s0mh-system-path/bin/light -A 2") end,
+        awful.key({ }, "XF86MonBrightnessUp", function () awful.spawn("brightnessctl s +3") end,
         {description = "increase brightness", group = "utils"}),
         awful.key({ modkey, "Shift" }, "h", function () awful.spawn("colorpicknotify") end,
         {description = "copy color to clipboard", group = "utils"}),
-        awful.key({ modkey, "Shift" }, "c",
-            function ()
-                awful.spawn("sh -c '[ ! $(pgrep picom) ] && (notify-send -r 555 -a Picom Enabled && picom) || (notify-send -r 555 -a Picom Disabled && pkill picom)'")
-            end,
-        {description = "toggle picom", group = "utils"}),
+        awful.key({ modkey, "Shift" }, "o", function () awful.spawn("ocrselect") end,
+        {description = "OCR selection", group = "utils"}),
+        awful.key({ modkey,         }, "x", function () awful.spawn("xkill") end,
+        {description = "kill window", group = "utils"}),
 
         -- music
         awful.key({ }, "XF86AudioPrev", function () awful.spawn("mpc prev") end,
@@ -248,6 +252,12 @@ local function set_keybindings ()
             awful.key({ modkey,           }, "m",
                 function (c)
                     c.maximized = not c.maximized
+                    c:raise()
+                end ,
+            {description = "(un)maximize", group = "client"}),
+            awful.key({ modkey,           }, "i",
+                function (c)
+                    c.minimized = not c.minimized
                     c:raise()
                 end ,
             {description = "(un)maximize", group = "client"}),

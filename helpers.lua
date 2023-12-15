@@ -5,6 +5,7 @@ local awful = require 'awful'
 local beautiful = require 'beautiful'
 local naughty = require 'naughty'
 local dpi = beautiful.xresources.apply_dpi
+local cairo = require("lgi").cairo
 
 local color = require 'modules.color'
 local rubato = require 'modules.rubato'
@@ -49,6 +50,13 @@ function helpers.apply_transition(opts)
 			fading.target = 0
 		end
 	}
+end
+
+helpers.prect        = function(tl, tr, br, bl, radius)
+  radius = radius or dpi(4)
+  return function(cr, width, height)
+    gears.shape.partially_rounded_rect(cr, width, height, tl, tr, br, bl, radius)
+  end
 end
 
 -- add hover support to wibox.container.background-based elements
@@ -560,15 +568,83 @@ helpers.inTable = function(t, v)
 end
 
 helpers.colorize_text = function(txt, fg)
-  if fg == "" then
-    fg = "#ffffff"
-  end
+	if fg == "" then
+		fg = "#ffffff"
+	end
 
-  return "<span foreground='" .. fg .. "'>" .. txt .. "</span>"
+	return "<span foreground='" .. fg .. "'>" .. txt .. "</span>"
 end
 
 helpers.click_key     = function(c, key)
-  awful.spawn.with_shell("xdotool type --window " .. tostring(c.window) .. " '" .. key .. "'")
+	awful.spawn.with_shell("xdotool type --window " .. tostring(c.window) .. " '" .. key .. "'")
+end
+
+helpers.split = function(inputstr, sep)
+	if sep == nil then
+		sep = "%s"
+	end
+	local t = {}
+	for str in string.gmatch(inputstr, "([^" .. sep .. "]+)") do
+		table.insert(t, str)
+	end
+	return t
+end
+
+helpers.readJson = function(DATA)
+  if helpers.file_exists(DATA) then
+    local f = assert(io.open(DATA, "rb"))
+    local lines = f:read("*all")
+    f:close()
+    local data = json.decode(lines)
+    return data
+  else
+    return {}
+  end
+end
+
+helpers.writeJson = function(PATH, DATA)
+  local w = assert(io.open(PATH, "w"))
+  w:write(json.encode(DATA, nil, { pretty = true, indent = "	", align_keys = false, array_newline = true }))
+  w:close()
+end
+helpers.file_exists = function(name)
+  local f = io.open(name, "r")
+  if f ~= nil then
+    io.close(f)
+    return true
+  else
+    return false
+  end
+end
+
+helpers.cropSurface  = function(ratio, surf)
+  local old_w, old_h = gears.surface.get_size(surf)
+  local old_ratio = old_w / old_h
+  if old_ratio == ratio then return surf end
+
+  local new_h = old_h
+  local new_w = old_w
+  local offset_h, offset_w = 0, 0
+  -- quick mafs
+  if (old_ratio < ratio) then
+    new_h = math.ceil(old_w * (1 / ratio))
+    offset_h = math.ceil((old_h - new_h) / 2)
+  else
+    new_w = math.ceil(old_h * ratio)
+    offset_w = math.ceil((old_w - new_w) / 2)
+  end
+
+  local out_surf = cairo.ImageSurface(cairo.Format.ARGB32, new_w, new_h)
+  local cr = cairo.Context(out_surf)
+  cr:set_source_surface(surf, -offset_w, -offset_h)
+  cr.operator = cairo.Operator.SOURCE
+  cr:paint()
+
+  return out_surf
+end
+
+helpers.gc = function(widget, id)
+  return widget:get_children_by_id(id)[1]
 end
 
 return helpers

@@ -12,9 +12,16 @@ local hour = wibox.widget {
 }
 
 local minutes = wibox.widget {
-    format = ' %M ',
+    format = ':%M ',
     align = 'center',
     font = beautiful.font_name .. ' 13',
+    widget = wibox.widget.textclock,
+}
+
+local day = wibox.widget {
+    format = ' %a %d %b ',
+    align = 'center',
+    font = beautiful.font_name .. ' 11',
     widget = wibox.widget.textclock,
 }
 
@@ -24,6 +31,7 @@ local clock_container = wibox.widget {
             {
                 hour,
                 minutes,
+				day,
                 spacing = 1,
                 layout = wibox.layout.fixed.horizontal,
             },
@@ -43,7 +51,7 @@ local clock_container = wibox.widget {
 }
 
 clock_container:add_button(awful.button({}, 1, function ()
-    awesome.emit_signal('calendar::toggle')
+    awesome.emit_signal('toggle::dashboard')
 end))
 
 return clock_container

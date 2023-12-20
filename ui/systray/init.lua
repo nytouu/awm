@@ -8,20 +8,28 @@ require 'ui.systray.listener'
 awful.screen.connect_for_each_screen(function (s)
     s.systray = {}
 
+    local capi = {
+        awesome = awesome,
+        screen = s,
+    }
+    local num_entries = capi.awesome.systray()
+
     local dimensions = {
         width = 100,
-        height = 42,
+        height = 38,
     }
+
 
     s.systray.popup = wibox {
         visible = false,
         ontop = true,
+		type = "popup_menu",
         width = dimensions.width,
         height = dimensions.height,
         bg = beautiful.bg_normal .. '00',
         fg = beautiful.fg_normal,
-        x = s.geometry.x + 1660 + beautiful.useless_gap * 4,
-        y = beautiful.bar_height + beautiful.useless_gap * 4,
+        x = s.geometry.x + 1456,
+        y = -2,
     }
 
     local self = s.systray.popup
@@ -33,7 +41,7 @@ awful.screen.connect_for_each_screen(function (s)
                     widget = wibox.widget.systray,
                     horizontal = false,
                     screen = s,
-                    base_size = 16,
+                    base_size = 24,
                 },
                 layout = wibox.layout.fixed.horizontal,
             },

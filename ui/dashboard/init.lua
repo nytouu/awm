@@ -18,13 +18,14 @@ local nf = require("ui.dashboard.modules.nf")
 
 awful.screen.connect_for_each_screen(function(s)
   local dashboard = wibox({
-    shape = helpers.mkroundedrect(12),
+    shape = helpers.mkroundedrect(8),
     screen = s,
-    width = 1300,
-    height = 600,
+    width = 1000,
+    height = 590,
     bg = beautiful.bg_normal,
     ontop = true,
     visible = false,
+	type = "utility",
   })
 
   dashboard:setup {
@@ -54,7 +55,7 @@ awful.screen.connect_for_each_screen(function(s)
     widget = wibox.container.margin,
     margins = 20,
   }
-  awful.placement.centered(dashboard, { honor_workarea = true, margins = 20 })
+  awful.placement.top(dashboard, { honor_workarea = true, margins = 12 })
   awesome.connect_signal("toggle::dashboard", function()
     dashboard.visible = not dashboard.visible
   end)

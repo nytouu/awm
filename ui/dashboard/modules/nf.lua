@@ -46,9 +46,10 @@ local widget = wibox.widget {
         {
           widget = wibox.widget.imagebox,
           image = beautiful.nixos,
-          forced_height = 140,
-          forced_width = 140,
+          forced_height = 40,
+          forced_width = 40,
           resize = true,
+		  valign = "center",
         },
         {
           {
@@ -135,7 +136,7 @@ local widget = wibox.widget {
   },
   widget = wibox.container.background,
   bg = beautiful.dimblack,
-  shape = helpers.mkroundedrect(20)
+  shape = helpers.mkroundedrect(12)
 }
 
 return widget

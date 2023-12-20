@@ -313,7 +313,7 @@ local finalwidget = wibox.widget {
     margins = 18
   },
   forced_width = 460,
-  shape = helpers.mkroundedrect(8),
+  shape = helpers.mkroundedrect(12),
   widget = wibox.container.background,
   bg = beautiful.dimblack
 }

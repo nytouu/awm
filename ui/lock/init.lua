@@ -68,7 +68,7 @@ local promptbox = wibox {
   ontop = true,
   shape = helpers.mkroundedrect(10),
   visible = false,
-  type = "utility"
+  type = "splash"
 }
 
 local background = wibox({
@@ -76,7 +76,7 @@ local background = wibox({
   height = dpi(1080),
   visible = false,
   ontop = true,
-  type = "utility"
+  type = "splash"
 })
 
 

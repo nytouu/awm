@@ -8,7 +8,7 @@ local bling     = require("modules.bling")
 local helpers   = require("helpers")
 local playerctl = bling.signal.playerctl.lib{
 	ignore = "firefox",
-    player = {"mpd", "%any"}
+	player = { "mpd" }
 }
 local dpi       = beautiful.xresources.apply_dpi
 

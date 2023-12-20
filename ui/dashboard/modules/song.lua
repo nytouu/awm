@@ -6,8 +6,8 @@ local gears     = require("gears")
 local bling      = require("modules.bling")
 local helpers   = require("helpers")
 local playerctl = bling.signal.playerctl.lib{
-	ignore = "firefox",
-    player = {"mpd", "%any"}
+	-- ignore = "firefox",
+	--     player = {"mpd", "%any"}
 }
 
 local art       = wibox.widget {
@@ -15,7 +15,7 @@ local art       = wibox.widget {
   opacity = 0.3,
   resize = true,
   height = 300,
-  clip_shape = helpers.mkroundedrect(20),
+  clip_shape = helpers.mkroundedrect(12),
   widget = wibox.widget.imagebox
 }
 
@@ -32,7 +32,7 @@ local widget    = wibox.widget {
         to = { 200, 0 },
         stops = { { 0, beautiful.dimblack .. "88" }, { 1, beautiful.bg_normal .. '33' } }
       },
-      shape = helpers.mkroundedrect(20),
+      shape = helpers.mkroundedrect(12),
       widget = wibox.container.background,
     },
     {

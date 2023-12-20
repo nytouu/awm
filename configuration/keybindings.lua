@@ -60,11 +60,20 @@ local function set_keybindings ()
 
     -- audio
     awful.keyboard.append_global_keybindings({
-        awful.key({ }, "XF86AudioRaiseVolume", function () awful.spawn("pamixer -i 1") end,
+        awful.key({ }, "XF86AudioRaiseVolume", function ()
+			awful.spawn("pamixer -i 1")
+			awesome.emit_signal("open::osd")
+		end,
         {description = "raise volume", group = "audio"}),
-        awful.key({ }, "XF86AudioLowerVolume", function () awful.spawn("pamixer -d 1") end,
+        awful.key({ }, "XF86AudioLowerVolume", function () 
+			awful.spawn("pamixer -d 1") 
+			awesome.emit_signal("open::osd")
+		end,
         {description = "lower volume", group = "audio"}),
-        awful.key({ }, "XF86AudioMute", function () awful.spawn("pamixer -t") end,
+        awful.key({ }, "XF86AudioMute", function () 
+			awful.spawn("pamixer -t") 
+			awesome.emit_signal("open::osd")
+		end,
         {description = "toggle mute", group = "audio"}),
 
         -- utilities
@@ -72,9 +81,15 @@ local function set_keybindings ()
         {description = "screenshot", group = "utils"}),
         awful.key({ modkey, "Shift" }, "p", function () awful.spawn("takescreenshot slop") end,
         {description = "slop screenshot", group = "utils"}),
-        awful.key({ }, "XF86MonBrightnessDown", function () awful.spawn("brightnessctl s -3") end,
+        awful.key({ }, "XF86MonBrightnessDown", function () 
+			awful.spawn("brightnessctl s 3-")
+			awesome.emit_signal("open::osdb")
+		end,
         {description = "reduce brightness", group = "utils"}),
-        awful.key({ }, "XF86MonBrightnessUp", function () awful.spawn("brightnessctl s +3") end,
+        awful.key({ }, "XF86MonBrightnessUp", function ()
+			awful.spawn("brightnessctl s +3") 
+			awesome.emit_signal("open::osdb")
+		end,
         {description = "increase brightness", group = "utils"}),
         awful.key({ modkey, "Shift" }, "h", function () awful.spawn("colorpicknotify") end,
         {description = "copy color to clipboard", group = "utils"}),

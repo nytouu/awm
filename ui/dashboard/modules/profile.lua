@@ -39,7 +39,7 @@ local widget = wibox.widget {
       widget = wibox.container.margin,
       margins = 30,
     },
-    shape = helpers.mkroundedrect(20),
+    shape = helpers.mkroundedrect(12),
     widget = wibox.container.background,
     bg = beautiful.dimblack,
   },

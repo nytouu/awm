@@ -16,7 +16,8 @@ local profile = wibox.widget {
 }
 
 profile:add_button(awful.button({}, 1, function()
-	awesome.emit_signal('toggle::dashboard')
+	-- awesome.emit_signal('toggle::dashboard')
+	awful.spawn("rofi -show drun")
 end))
 
 return profile

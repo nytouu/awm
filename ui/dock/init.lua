@@ -400,35 +400,42 @@ local dock = function(s)
 			},
 			{
 				count   = 0,
-				id      = 11,
+				id      = 10,
+				clients = {},
+				name    = "obs",
+				class   = "obs"
+			},
+			{
+				count   = 0,
+				id      = 12,
 				clients = {},
 				name    = "lmms",
 				class   = "lmms"
 			},
 			{
 				count   = 0,
-				id      = 12,
+				id      = 13,
 				clients = {},
 				name    = "neorg",
 				class   = "neorg"
 			},
             {
                 count   = 0,
-                id      = 13,
+                id      = 14,
                 clients = {},
                 name    = "libreoffice",
                 class   = "libreoffice"
             },
 			{
 				count   = 0,
-				id      = 14,
+				id      = 15,
 				clients = {},
 				name    = "unityhub",
 				class   = "unityhub"
 			},
 		}
 
-		local classes = { "tabbed", "st", "firefox", "discord", "thunar", "neorg", "ncmpcpp", "steam", "unityhub", "Unity", "gimp", "blender", "lmms", "aseprite", "osu!" }
+		local classes = { "tabbed", "st", "firefox", "discord", "thunar", "neorg", "ncmpcpp", "steam", "unityhub", "Unity", "gimp", "blender", "lmms", "aseprite", "osu!", "obs" }
 		local dockElements = wibox.widget { layout = layout, spacing = 8 }
 
 		-- generating the data

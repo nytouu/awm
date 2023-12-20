@@ -12,11 +12,12 @@ awful.screen.connect_for_each_screen(function(s)
   local control = wibox({
     shape = helpers.mkroundedrect(8),
     screen = s,
-    width = 520,
+    width = 440,
     height = 340,
     bg = beautiful.bg_normal .. "ff",
     ontop = true,
     visible = false,
+    type = "utility"
   })
 
   control:setup {

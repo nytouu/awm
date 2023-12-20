@@ -32,7 +32,7 @@ local function gettaglist(s)
 			},
 			id = 'background_role',
 			forced_width = 38,
-			forced_height = 8,
+			forced_height = 12,
 			widget = wibox.container.background,
 			create_callback = function (self, tag)
 				self.animate = rubato.timed {
@@ -44,9 +44,9 @@ local function gettaglist(s)
 
 				self.update = function ()
 				if tag.selected then
-						self.animate.target = 22
+						self.animate.target = 20
 					elseif #tag:clients() > 0 then
-						self.animate.target = 18
+						self.animate.target = 14
 					else
 						self.animate.target = 12
 					end

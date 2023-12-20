@@ -14,14 +14,14 @@ end
 local createSlider = function(icon, signal, command)
   local slidSlider = wibox.widget {
     bar_shape           = helpers.mkroundedrect(15),
-    bar_height          = 3,
+    bar_height          = 1,
     handle_color        = beautiful.bg_normal,
     bar_color           = beautiful.bg_normal .. '00',
-    bar_active_color    = beautiful.fg_normal,
+    bar_active_color    = beautiful.blue,
     handle_shape        = createHandle(),
     handle_border_width = 2,
     handle_width        = dpi(20),
-    handle_margins      = { top = 5.9 },
+    handle_margins      = { top = 5.9, right = -3, left = 1 },
     handle_border_color = beautiful.fg_normal,
     value               = 25,
     forced_height       = 35,
@@ -98,7 +98,7 @@ end
 
 local widget       = wibox.widget {
   createSlider("󰃟 ", "brightness", "brightnessctl s %d%%"),
-  createSlider("󰓃 ", "volume", "pamixer --set-volume %d"),
+  createSlider(" ", "volume", "pamixer --set-volume %d"),
   layout = wibox.layout.fixed.vertical,
   spacing = 25,
 }

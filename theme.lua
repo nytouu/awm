@@ -88,7 +88,7 @@ theme.border_marked = "#458588"
 
 -- gaps
 theme.useless_gap = dpi(8)
-theme.gap_single_client = false
+theme.gap_single_client = true
 
 -- tasklist
 theme.tasklist_plain_task_name = true

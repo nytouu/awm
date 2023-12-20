@@ -8,8 +8,8 @@ local gettaglist = require 'ui.bar.modules.tags'
 local gettasklist = require 'ui.bar.modules.tasklist'
 local systray_toggler = require 'ui.bar.modules.systray_toggler'
 -- local dashboard_toggler = require 'ui.bar.modules.dashboard_toggler'
-local actions = require 'ui.bar.modules.actions'
 local clock = require 'ui.bar.modules.date'
+local control = require 'ui.bar.modules.control'
 local getlayoutbox = require 'ui.bar.modules.layoutbox'
 -- local powerbutton = require 'ui.bar.modules.powerbutton'
 local battery = require 'ui.bar.modules.battery'
@@ -34,33 +34,81 @@ screen.connect_signal('request::desktop_decoration', function (s)
             {
 				{
 					profile,
+                    right = 4,
 					widget = wibox.container.margin,
 				},
-				getlayoutbox(s),
-				-- {
-				-- 	gettasklist(s),
-				-- 	align  = "center",
-				-- 	widget = wibox.container.place
-				-- },
+                {
+                    {
+                        {
+                            getlayoutbox(s),
+                            widget = wibox.container.place,
+                            halign = 'center',
+                            valign = 'center',
+                        },
+                        widget = wibox.container.background,
+                        shape = helpers.mkroundedrect(8),
+                        bg = beautiful.bg_normal,
+						-- TODO: change here
+                    },
+                    right = 4,
+                    widget = wibox.container.margin,
+                },
 				layout = wibox.layout.align.horizontal,
 				widget = wibox.container.place,
+                {
+                    {
+                        {
+                            gettaglist(s),
+                            widget = wibox.container.place,
+                            halign = 'center',
+                            valign = 'center',
+                        },
+                        widget = wibox.container.background,
+                        forced_height = 24,
+                        forced_width = s.geometry.width / 8.5,
+                        shape = helpers.mkroundedrect(8),
+                        bg = beautiful.dimblack,
+                        fg = beautiful.dimblack,
+                    },
+                    widget = wibox.container.place,
+                },
             },
             nil,
             {
                 {
                     {
-                        systray_toggler,
-                        spacing = 9,
-                        right = 4,
-                        widget = wibox.container.margin,
+                        {
+                            {
+                                systray_toggler,
+                                right = 5,
+                                left = 5,
+                                top = 8,
+                                bottom = 8,
+                                widget = wibox.container.margin,
+                            },
+                            shape = helpers.mkroundedrect(8),
+                            bg = beautiful.dimblack,
+                            widget = wibox.container.background,
+                        },
+                        widget = wibox.container.place,
                     },
 					{
-						music,
-                        right = 8,
-						-- top = 4,
-						-- bottom = 4,
+						{
+							music,
+							right = 8,
+							-- top = 4,
+							-- bottom = 4,
+							widget = wibox.container.place,
+						},
+                        left = 8,
+						right = 8,
 						widget = wibox.container.margin,
 					},
+                    {
+                        control,
+						right = 8,
+                        widget = wibox.container.margin,
+                    },
 					{
 						{
 							battery,
@@ -69,11 +117,6 @@ screen.connect_signal('request::desktop_decoration', function (s)
 						spacing = 2,
 						widget = wibox.container.margin,
 					},
-                    {
-                        clock,
-						left = 8,
-                        widget = wibox.container.margin,
-                    },
                     layout = wibox.layout.fixed.horizontal,
                 },
                 left = 4,
@@ -83,28 +126,12 @@ screen.connect_signal('request::desktop_decoration', function (s)
         },
         {
             {
-                {
-                    gettaglist(s),
-                    widget = wibox.container.place,
-                    halign = 'center',
-                    valign = 'center',
-                },
-                widget = wibox.container.background,
-                forced_height = 24,
-                forced_width = s.geometry.width / 8,
-                shape = helpers.mkroundedrect(24),
-                bg = beautiful.dimblack,
-                fg = beautiful.dimblack,
+                clock,
+                left = 8,
+                widget = wibox.container.margin,
             },
             widget = wibox.container.place,
         },
-        -- {
-        --     -- layout = wibox.layout.fixed.horizontal,
-        --     -- widget = wibox.container.background,
-        --     widget = wibox.container.place,
-        --     -- widget = wibox.container.margin,
-        --     layout = wibox.layout.fixed.horizontal,
-        -- },
     }
 
     local bar = awful.popup {
@@ -117,13 +144,6 @@ screen.connect_signal('request::desktop_decoration', function (s)
 		type = "dock",
         widget = bar_content,
         screen = s,
-        -- placement = function (d)
-        --     return awful.placement.left(d, {
-        --         margins = {
-        --             -- left = beautiful.useless_gap * 2
-        --         }
-        --     })
-        -- end,
     }
 
 	local function toggle_ontop(c)
@@ -141,10 +161,6 @@ screen.connect_signal('request::desktop_decoration', function (s)
 
     bar:struts {
         top = beautiful.bar_height + beautiful.useless_gap,
-        -- top = beautiful.bar_height + beautiful.useless_gap * 2,
-		-- bottom = beautiful.useless_gap,
-		-- left = beautiful.useless_gap,
-		-- right = beautiful.useless_gap
     }
 end)
 

@@ -34,10 +34,11 @@ function timer:new()
       id = "image",
       image = helpers.cropSurface(1.42, gears.surface.load_uncached(gears.filesystem.get_configuration_dir() .. "/assets/pomo.jpg")),
       widget = wibox.widget.imagebox,
-      clip_shape = helpers.mkroundedrect(20),
+      clip_shape = helpers.mkroundedrect(12),
       opacity = 0.9,
       resize = true,
-      horizontal_fit_policy = "fit"
+      horizontal_fit_policy = "fit",
+      vertical_fit_policy = "fit"
     },
     {
       {
@@ -49,7 +50,7 @@ function timer:new()
         to = { 200, 0 },
         stops = { { 0, beautiful.dimblack .. "aa" }, { 1, beautiful.bg_normal .. 'dd' } }
       },
-      shape = helpers.mkroundedrect(20),
+      shape = helpers.mkroundedrect(12),
       widget = wibox.container.background,
     },
     {
@@ -84,7 +85,7 @@ function timer:new()
                     margins = 12,
                   },
                   widget = wibox.container.background,
-                  shape = helpers.mkroundedrect(50),
+                  shape = helpers.mkroundedrect(12),
                   buttons = {
                     awful.button({}, 1, function()
                       if self.defaultTime > 5 * 60 then
@@ -193,7 +194,7 @@ function timer:new()
         widget = wibox.container.place,
         valign = 'center',
       },
-      shape  = helpers.mkroundedrect(20),
+      shape  = helpers.mkroundedrect(12),
       widget = wibox.container.background,
     },
     {

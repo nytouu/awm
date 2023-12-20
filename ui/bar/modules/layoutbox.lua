@@ -18,9 +18,9 @@ local function get_layoutbox(s)
     end
 
     local layoutbox_tooltip = helpers.make_popup_tooltip(get_layoutname(), function (d)
-        return awful.placement.top_right(d, {
+        return awful.placement.top_left(d, {
             margins = {
-                right = beautiful.useless_gap * 3,
+                left = beautiful.useless_gap,
                 top = beautiful.bar_height + beautiful.useless_gap * 2
             }
         })

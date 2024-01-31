@@ -12,8 +12,8 @@ local top       = require("ui.powermenu.modules.topbar")
 awful.screen.connect_for_each_screen(function(s)
   local exit = wibox({
     screen = s,
-    width = 1920,
-    height = 1080,
+    width = s.geometry.width ,
+    height = s.geometry.height,
     bg = beautiful.bg_normal .. "00",
     ontop = true,
     visible = false,

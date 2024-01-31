@@ -72,7 +72,7 @@ local promptbox = wibox {
 }
 
 local background = wibox({
-  width = dpi(1920),
+  width = dpi(2650),
   height = dpi(1080),
   visible = false,
   ontop = true,

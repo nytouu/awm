@@ -54,12 +54,12 @@ local widget = wibox.widget {
         {
           {
             font = beautiful.mono_font .. " Medium 11",
-            markup = helpers.colorize_text('OS  : NixOS 24.05', beautiful.fg_normal),
+            markup = helpers.colorize_text('OS  : NixOS 23.11', beautiful.fg_normal),
             widget = wibox.widget.textbox,
           },
           {
             font = beautiful.mono_font .. " Medium 11",
-            markup = helpers.colorize_text('WM  : Awesome', beautiful.fg_normal),
+            markup = helpers.colorize_text('WM  : awesome', beautiful.fg_normal),
             widget = wibox.widget.textbox,
           },
           {
@@ -69,7 +69,7 @@ local widget = wibox.widget {
           },
           {
             font = beautiful.mono_font .. " Medium 11",
-            markup = helpers.colorize_text('SH  : ZSH', beautiful.fg_normal),
+            markup = helpers.colorize_text('SH  : zsh', beautiful.fg_normal),
             widget = wibox.widget.textbox,
           },
           spacing = 8,

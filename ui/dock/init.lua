@@ -187,7 +187,7 @@ local dock = function(s)
 				end
 
 			else
-				bac = beautiful.dimblack
+				bac = beautiful.light_black
 				click = function()
 					v.minimized = true
 				end
@@ -197,7 +197,7 @@ local dock = function(s)
 			local widget = wibox.widget {
 				bg            = bac,
 				forced_height = dpi(5),
-				forced_width  = dpi(10),
+				forced_width  = dpi(15),
 				shape         = helpers.mkroundedrect(50),
 				widget        = wibox.container.background,
 				buttons = {
@@ -242,7 +242,7 @@ local dock = function(s)
 			},
 			{
 				name        = "tabbed",
-				convert     = "terminal",
+				convert     = "hyper",
 				class 		= "tabbed",
 				command     = "tabbed -c -k -n st -b -r 2 st -w ''",
 			},
@@ -257,18 +257,30 @@ local dock = function(s)
 				command     = "osu-lazer"
 			},
 			{
+				name        = "rofi",
+				convert = "pop-cosmic-applications",
+				-- convert     = "apper",
+				-- convert     = "app-launcher",
+				command     = "rofi -show drun"
+			},
+			{
+				name        = "godot",
+				convert     = "godot",
+				command     = "godot4"
+			},
+			{
 				name        = "Unity",
 				convert     = "unityhub",
 				command     = "unityhub"
 			},
 			{
 				name        = "neorg",
-				convert     = "notes",
+				convert     = "synology-note-station",
 				command     = terminal .. " -d ~/notes/classes -c neorg nvim +'Neorg workspace default' ~/notes/classes/index.norg"
 			},
 			{
 				name        = "ncmpcpp",
-				convert     = "io.bassi.Amberol",
+				convert     = "acestream",
 				command     = terminal .. " -c ncmpcpp -T ncmpcpp ncmpcpp"
 			},
 			{
@@ -332,110 +344,150 @@ local dock = function(s)
 				count   = 0,
 				id      = 1,
 				clients = {},
+				name    = "rofi",
+				class   = "rofi"
+			},
+			{
+				count   = 0,
+				id      = 2,
+				clients = {},
 				name    = "tabbed",
 				class   = "tabbed"
 			},
 			{
 				count   = 0,
-				id      = 2,
+				id      = 3,
 				clients = {},
 				name    = "thunar",
 				class   = "thunar"
 			},
 			{
 				count   = 0,
-				id      = 3,
+				id      = 4,
 				clients = {},
 				name    = "firefox",
 				class   = "firefox"
 			},
 			{
 				count   = 0,
-				id      = 4,
+				id      = 5,
 				clients = {},
 				name    = "ncmpcpp",
 				class   = "ncmpcpp"
 			},
+			{
+				count   = 0,
+				id      = 6,
+				clients = {},
+				name    = "neorg",
+				class   = "neorg"
+			},
+			{
+				count   = 0,
+				id      = 7,
+				clients = {},
+				name    = "gnome-calendar",
+				class   = "gnome-calendar"
+			},
+			{
+				count   = 0,
+				id      = 8,
+				clients = {},
+				name    = "gnome-system-monitor",
+				class   = "gnome-system-monitor"
+			},
             {
                 count   = 0,
-                id      = 5,
+                id      = 9,
                 clients = {},
                 name    = "discord",
                 class   = "discord"
             },
 			{
 				count   = 0,
-				id      = 6,
+				id      = 10,
 				clients = {},
 				name    = "steam",
 				class   = "steam"
 			},
 			{
 				count   = 0,
-				id      = 7,
+				id      = 11,
 				clients = {},
 				name    = "osu-lazer",
 				class   = "osu-lazer"
 			},
 			{
 				count   = 0,
-				id      = 8,
+				id      = 12,
 				clients = {},
 				name    = "aseprite",
 				class   = "aseprite"
 			},
 			{
 				count   = 0,
-				id      = 9,
+				id      = 13,
 				clients = {},
 				name    = "gimp",
 				class   = "Gimp"
 			},
 			{
 				count   = 0,
-				id      = 10,
+				id      = 14,
 				clients = {},
 				name    = "blender",
 				class   = "Blender"
 			},
 			{
 				count   = 0,
-				id      = 10,
+				id      = 15,
 				clients = {},
 				name    = "obs",
 				class   = "obs"
 			},
-			{
-				count   = 0,
-				id      = 12,
-				clients = {},
-				name    = "lmms",
-				class   = "lmms"
-			},
-			{
-				count   = 0,
-				id      = 13,
-				clients = {},
-				name    = "neorg",
-				class   = "neorg"
-			},
             {
                 count   = 0,
-                id      = 14,
+                id      = 16,
                 clients = {},
                 name    = "libreoffice",
                 class   = "libreoffice"
             },
+            {
+                count   = 0,
+                id      = 17,
+                clients = {},
+                name    = "godot",
+                class   = "godot"
+            },
 			{
 				count   = 0,
-				id      = 15,
+				id      = 18,
 				clients = {},
 				name    = "unityhub",
 				class   = "unityhub"
 			},
 		}
 
-		local classes = { "tabbed", "st", "firefox", "discord", "thunar", "neorg", "ncmpcpp", "steam", "unityhub", "Unity", "gimp", "blender", "lmms", "aseprite", "osu!", "obs" }
+		local classes = {
+            "tabbed",
+            "st",
+            "firefox",
+            "discord",
+            "thunar",
+            "neorg",
+            "ncmpcpp",
+            "steam",
+            "unityhub",
+            "Unity",
+            "gimp",
+            "blender",
+            "lmms",
+            "aseprite",
+            "osu!",
+            "obs",
+            "gnome-calendar",
+            "gnome-system-monitor"
+        }
 		local dockElements = wibox.widget { layout = layout, spacing = 8 }
 
 		-- generating the data

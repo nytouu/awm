@@ -1,6 +1,7 @@
 local xresources = require("beautiful.xresources")
 local gears = require "gears"
 local gfs = require("gears.filesystem")
+local colors = require("colors.melange_dark")
 
 local dpi = xresources.apply_dpi
 
@@ -26,27 +27,27 @@ theme.font_size = '10'
 theme.font = theme.font_name .. ' ' .. theme.font_size
 
 -- base colors
-theme.black = '#0d0e0f'
-theme.dimblack = '#171a1a'
-theme.light_black = '#32302f'
-theme.grey = '#665c54'
-theme.red = '#cc241d'
-theme.orange = '#fa842f'
-theme.yellow = '#fabd2f'
-theme.magenta = '#b16286'
-theme.green = '#689d6a'
-theme.blue = '#458588'
-theme.cyan = '#458588'
-theme.aqua = '#458588'
+theme.black = colors.black
+theme.dimblack = colors.dimblack
+theme.light_black = colors.light_black
+theme.grey = colors.grey
+theme.red = colors.red
+theme.orange = colors.orange
+theme.yellow = colors.yellow
+theme.magenta = colors.magenta
+theme.green = colors.green
+theme.blue = colors.blue
+theme.cyan = colors.cyan
+theme.aqua = colors.aqua
 
 -- backgrounds
-theme.bg_darker     = "#101010"
-theme.bg_normal     = "#000000"
-theme.bg_contrast   = "#0f0f0f"
-theme.bg_lighter    = "#111111"
+theme.bg_darker     = colors.black
+theme.bg_normal		= colors.black
+theme.bg_contrast   = colors.black
+theme.bg_lighter    = colors.black
 
-theme.bg_titlebar	= "#292522"
-theme.bg_title_alt	= "#292522"
+theme.bg_titlebar	= colors.bg_alt
+theme.bg_title_alt	= colors.bg_alt
 
 -- elements bg
 theme.bg_focus      = theme.bg_normal
@@ -55,7 +56,7 @@ theme.bg_minimize   = theme.bg_normal
 theme.bg_systray    = theme.bg_normal
 
 -- foregrounds
-theme.fg_normal     = "#ebdbb2"
+theme.fg_normal     = colors.fg
 theme.fg_focus      = theme.fg_normal
 theme.fg_urgent     = theme.fg_normal
 theme.fg_minimize   = theme.fg_normal
@@ -82,9 +83,9 @@ theme.border_width = dpi(1)
 theme.border_radius = dpi(12)
 
 theme.border_normal = "#000000"
-theme.border_color  = "#444444"
-theme.border_focus  = "#404040"
-theme.border_marked = "#458588"
+theme.border_color  = colors.focus
+theme.border_focus  = colors.focus
+theme.border_marked = colors.marked
 
 -- gaps
 theme.useless_gap = dpi(8)

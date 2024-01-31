@@ -9,7 +9,8 @@ screen.connect_signal('request::wallpaper', function (s)
 		awful.wallpaper {
 			screen         = s,
 			honor_workarea = true,
-			bg             = beautiful.bg_dark,
+			bg             = beautiful.bg_normal,
+			ontop = true,
 			widget         = {
 				{
 					image                 = beautiful.wallpaper,

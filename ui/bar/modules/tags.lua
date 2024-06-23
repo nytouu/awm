@@ -31,7 +31,7 @@ local function gettaglist(s)
 				widget = wibox.widget.textbox,
 			},
 			id = 'background_role',
-			forced_width = 38,
+			forced_width = 48,
 			forced_height = 12,
 			widget = wibox.container.background,
 			create_callback = function (self, tag)
@@ -44,9 +44,9 @@ local function gettaglist(s)
 
 				self.update = function ()
 				if tag.selected then
-						self.animate.target = 20
+						self.animate.target = 28
 					elseif #tag:clients() > 0 then
-						self.animate.target = 14
+						self.animate.target = 16
 					else
 						self.animate.target = 12
 					end

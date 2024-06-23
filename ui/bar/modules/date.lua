@@ -50,8 +50,8 @@ local clock_container = wibox.widget {
     widget = wibox.container.margin,
 }
 
-clock_container:add_button(awful.button({}, 1, function ()
-    awesome.emit_signal('toggle::dashboard')
-end))
+-- clock_container:add_button(awful.button({}, 1, function ()
+--     awesome.emit_signal('toggle::dashboard')
+-- end))
 
 return clock_container

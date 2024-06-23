@@ -14,7 +14,7 @@ local function set_keybindings ()
         --           {description = "open or focus a terminal", group = "launcher"}),
         -- awful.key({ modkey, "Control" }, "Return", function () awful.spawn("tabbed alacritty --embed") end,
         --           {description = "open a terminal", group = "launcher"}),
-        awful.key({ modkey,           }, "Return", function() awful.spawn(terminal) end,
+        awful.key({ modkey,           }, "Return", function() awful.spawn(terminal .. " -e tmux") end,
                   {description = "open a terminal", group = "launcher"}),
         awful.key(
             { modkey, "Shift" }, 'd',
@@ -270,12 +270,12 @@ local function set_keybindings ()
                     c:raise()
                 end ,
             {description = "(un)maximize", group = "client"}),
-            awful.key({ modkey,           }, "i",
-                function (c)
-                    c.minimized = not c.minimized
-                    c:raise()
-                end ,
-            {description = "(un)maximize", group = "client"}),
+            -- awful.key({ modkey,           }, "i",
+            --     function (c)
+            --         c.minimized = not c.minimized
+            --         c:raise()
+            --     end ,
+            -- {description = "(un)maximize", group = "client"}),
             -- awful.key({ modkey, "Control" }, "m",
             --     function (c)
             --         c.maximized_vertical = not c.maximized_vertical

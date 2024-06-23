@@ -1,7 +1,7 @@
 local xresources = require("beautiful.xresources")
 local gears = require "gears"
 local gfs = require("gears.filesystem")
-local colors = require("colors.melange_dark")
+local colors = require("colors.adwaita_dark")
 
 local dpi = xresources.apply_dpi
 
@@ -19,9 +19,9 @@ local theme = {}
 theme.user= "nytou"
 
 -- fonts
-theme.font_name = 'Torus Pro'
-theme.nerd_font = 'FantasqueSansM Nerd Font'
-theme.mono_font = 'IBM Plex Mono'
+theme.font_name = 'SF Pro Display'
+theme.nerd_font = 'Liga SFMono Nerd Font'
+theme.mono_font = 'Liga SFMono Nerd Font'
 theme.material_icons = 'Material Icons'
 theme.font_size = '10'
 theme.font = theme.font_name .. ' ' .. theme.font_size
@@ -73,7 +73,7 @@ theme.actions = {
 }
 
 -- bar
-theme.bar_height = 28
+theme.bar_height = 38
 
 -- borders
 theme.border_width = dpi(1)
@@ -88,7 +88,7 @@ theme.border_focus  = colors.focus
 theme.border_marked = colors.marked
 
 -- gaps
-theme.useless_gap = dpi(8)
+theme.useless_gap = dpi(10)
 theme.gap_single_client = true
 
 -- tasklist
@@ -169,7 +169,7 @@ theme.network_connected = ''
 theme.network_disconnected = '󰖪 '
 
 -- pfp
-theme.pfp = '~/pics/nytouu.png'
+theme.pfp = assets_path .. 'pfp.png'
 theme.nixos = assets_path .. 'nixos.png'
 
 -- fallback music

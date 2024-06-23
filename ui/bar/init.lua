@@ -35,6 +35,7 @@ screen.connect_signal('request::desktop_decoration', function (s)
 				{
 					profile,
                     right = 4,
+                    left = 8,
 					widget = wibox.container.margin,
 				},
                 {
@@ -160,7 +161,7 @@ screen.connect_signal('request::desktop_decoration', function (s)
 	client.connect_signal("property::fullscreen", toggle_ontop)
 
     bar:struts {
-        top = beautiful.bar_height + beautiful.useless_gap,
+        top = beautiful.bar_height,
     }
 end)
 

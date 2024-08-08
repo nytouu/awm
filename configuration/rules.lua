@@ -71,11 +71,11 @@ local function setup_rules ()
 			properties = { tag = "1" },
 		}
 		ruled.client.append_rule {
-			rule = { class = "Firefox" },
+			rule = { class = "firefox" },
 			properties = { tag = "4" },
 		}
 		ruled.client.append_rule {
-			rule = { class = "discord" },
+			rule = { class = "vesktop" },
 			properties = { tag = "6" },
 		}
     end)

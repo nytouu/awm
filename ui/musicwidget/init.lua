@@ -65,6 +65,8 @@ awful.screen.connect_for_each_screen(function(s)
         ontop = true,
         visible = false,
 		type = "utility",
+		border_width = beautiful.border_widget,
+		border_color = beautiful.grey,
     })
 
     music:setup {
@@ -84,6 +86,8 @@ awful.screen.connect_for_each_screen(function(s)
                     },
                     shape = helpers.mkroundedrect(12),
                     widget = wibox.container.background,
+					border_width = beautiful.border_widget,
+					border_color = beautiful.light_black,
                 },
                 {
                     {
@@ -135,6 +139,8 @@ awful.screen.connect_for_each_screen(function(s)
                     shape = helpers.mkroundedrect(12),
                     widget = wibox.container.background,
                     bg = beautiful.dimblack,
+					border_width = beautiful.border_widget,
+					border_color = beautiful.light_black,
                 },
                 widget = wibox.container.margin,
                 left = 20,

@@ -29,7 +29,9 @@ local dock = function(s)
 		width     = 600,
 		type = "dock",
 		placement = function(c) placeDock(c, 10) end,
-		shape     = helpers.mkroundedrect(10)
+		shape     = helpers.mkroundedrect(10),
+		border_width = beautiful.border_widget,
+		border_color = beautiful.grey,
 	}
 
 	-- autohiding the dock
@@ -242,7 +244,7 @@ local dock = function(s)
 			},
 			{
 				name        = "tabbed",
-				convert     = "hyper",
+				convert     = "st",
 				class 		= "tabbed",
 				command     = "tabbed -c -k -n st -b -r 2 st -w ''",
 			},
@@ -254,7 +256,7 @@ local dock = function(s)
 			{
 				name        = "osu!",
 				convert     = "osu-lazer",
-				command     = "osu-lazer"
+				command     = "osu!"
 			},
 			{
 				name        = "rofi",
@@ -274,6 +276,11 @@ local dock = function(s)
 				command     = "unityhub"
 			},
 			{
+				name        = "vesktop",
+				convert     = "discord",
+				command     = "vesktop"
+			},
+			{
 				name        = "neorg",
 				convert     = "synology-note-station",
 				command     = terminal .. " -d ~/notes/classes -c neorg nvim +'Neorg workspace default' ~/notes/classes/index.norg"
@@ -281,7 +288,7 @@ local dock = function(s)
 			{
 				name        = "ncmpcpp",
 				convert     = "acestream",
-				command     = terminal .. " -c ncmpcpp -T ncmpcpp ncmpcpp"
+				command     = "st -c ncmpcpp -n ncmpcpp ncmpcpp",
 			},
 			{
 				name        = "thunar",
@@ -342,130 +349,60 @@ local dock = function(s)
 		local metadata = {
 			{
 				count   = 0,
-				id      = 1,
-				clients = {},
-				name    = "rofi",
-				class   = "rofi"
-			},
-			{
-				count   = 0,
-				id      = 2,
+				id      = 0,
 				clients = {},
 				name    = "tabbed",
 				class   = "tabbed"
 			},
 			{
 				count   = 0,
-				id      = 3,
+				id      = 1,
 				clients = {},
 				name    = "thunar",
 				class   = "thunar"
 			},
 			{
 				count   = 0,
-				id      = 4,
+				id      = 2,
 				clients = {},
 				name    = "firefox",
 				class   = "firefox"
 			},
 			{
 				count   = 0,
-				id      = 5,
+				id      = 3,
 				clients = {},
 				name    = "ncmpcpp",
 				class   = "ncmpcpp"
 			},
 			{
 				count   = 0,
-				id      = 6,
+				id      = 4,
 				clients = {},
 				name    = "neorg",
 				class   = "neorg"
 			},
 			{
 				count   = 0,
-				id      = 7,
-				clients = {},
-				name    = "gnome-calendar",
-				class   = "gnome-calendar"
-			},
-			{
-				count   = 0,
-				id      = 8,
-				clients = {},
-				name    = "gnome-system-monitor",
-				class   = "gnome-system-monitor"
-			},
-            {
-                count   = 0,
-                id      = 9,
-                clients = {},
-                name    = "discord",
-                class   = "discord"
-            },
-			{
-				count   = 0,
-				id      = 10,
-				clients = {},
-				name    = "steam",
-				class   = "steam"
-			},
-			{
-				count   = 0,
-				id      = 11,
+				id      = 5,
 				clients = {},
 				name    = "osu-lazer",
 				class   = "osu-lazer"
 			},
 			{
 				count   = 0,
-				id      = 12,
+				id      = 6,
 				clients = {},
-				name    = "aseprite",
-				class   = "aseprite"
-			},
-			{
-				count   = 0,
-				id      = 13,
-				clients = {},
-				name    = "gimp",
-				class   = "Gimp"
-			},
-			{
-				count   = 0,
-				id      = 14,
-				clients = {},
-				name    = "blender",
-				class   = "Blender"
-			},
-			{
-				count   = 0,
-				id      = 15,
-				clients = {},
-				name    = "obs",
-				class   = "obs"
+				name    = "steam",
+				class   = "steam"
 			},
             {
                 count   = 0,
-                id      = 16,
+                id      = 7,
                 clients = {},
-                name    = "libreoffice",
-                class   = "libreoffice"
+                name    = "vesktop",
+                class   = "vesktop"
             },
-            {
-                count   = 0,
-                id      = 17,
-                clients = {},
-                name    = "godot",
-                class   = "godot"
-            },
-			{
-				count   = 0,
-				id      = 18,
-				clients = {},
-				name    = "unityhub",
-				class   = "unityhub"
-			},
 		}
 
 		local classes = {
@@ -482,6 +419,7 @@ local dock = function(s)
             "gimp",
             "blender",
             "lmms",
+            "vesktop",
             "aseprite",
             "osu!",
             "obs",

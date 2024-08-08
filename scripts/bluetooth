@@ -3,10 +3,10 @@
 toggle() {
     STATUS="$(bluetoothctl show | grep Powered | awk '{print $2}')"
     if [ $STATUS = "yes" ]; then
-        bluetoothctl power off
+        rfkill block bluetooth
         notify-send -a "Bluetooth" --urgency=normal "Bluetooth" "Bluetooth has been turned off."
     else
-        bluetoothctl power on
+        rfkill unblock bluetooth
         notify-send -a "Bluetooth" --urgency=normal "Bluetooth" "Bluetooth has been turned on."
     fi
 }

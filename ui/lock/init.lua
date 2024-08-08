@@ -54,7 +54,7 @@ local check_caps = function()
       if stdout:match('off') then
         label.markup = "Type The Password Here"
       else
-        label.markup = "HINT: Caps Lock Is ON"
+        label.markup = "<b>HINT</b>: Caps Lock Is ON"
       end
     end
   )
@@ -210,7 +210,7 @@ promptbox:setup {
         {
           {
             font = beautiful.font_name .. " 110",
-            format = "%H:%M",
+            format = "<b>%H:%M</b>",
             halign = "center",
             valign = "center",
             widget = wibox.widget.textclock

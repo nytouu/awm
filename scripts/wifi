@@ -1,6 +1,6 @@
 #!/bin/sh
 
-STATUS=$(connmanctl technologies | grep Powered | sed '1!d' | awk '{print $3}')
+STATUS=$(connmanctl technologies | grep Powered | sed '2!d' | awk '{print $3}')
 SSID=$(iwgetid -r)
 STRENGTH=$(awk 'NR==3 {printf("%.0f",$3*10/7)}' /proc/net/wireless)
 
@@ -10,7 +10,7 @@ toggle() {
         notify-send -a "wifi"  --urgency=normal "Wi-Fi" "Wi-Fi has been turned off!"
     else
         connmanctl enable wifi
-        notify-send -a "wifi"  --urgency=normal "Wi-Fi" "Wi-Fi has been turned on, you are back online!"
+        notify-send -a "wifi"  --urgency=normal "Wi-Fi" "Wi-Fi has been turned on!"
     fi
 }
 

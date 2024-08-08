@@ -2,6 +2,7 @@
 local wibox = require 'wibox'
 local beautiful = require 'beautiful'
 local awful = require 'awful'
+local helpers = require 'helpers'
 
 local toggler = wibox.widget {
     markup = '  ',

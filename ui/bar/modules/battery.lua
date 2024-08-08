@@ -73,10 +73,34 @@ local vbar_batstatus = wibox.widget {
 	widget    = wibox.container.rotate
 }
 
+local battery_tooltip = helpers.make_popup_tooltip("-1%", function (d)
+    return awful.placement.top_right(d, {
+        margins = {
+            right = beautiful.useless_gap,
+            top = beautiful.bar_height + beautiful.useless_gap * 2
+        }
+    })
+end)
+
+battery_tooltip.attach_to_object(battery)
+
+local function update_content(t)
+    battery_tooltip.widget.text = t
+end
+
 awesome.connect_signal("signal::battery", function(value, state)
 	local b = battery
 	b.state = state
 	b.value = value
+
+    local state_text
+    if state then
+        state_text = "Charging"
+    else
+        state_text = "Discharging"
+    end
+
+    update_content(state_text .. ": " .. value .. "%")
 	if state then
 		text.markup = helpers.colorize_text("󱐋", beautiful.bg_normal)
 		b.color = beautiful.green

@@ -7,3 +7,5 @@ require "configuration.autofocus"
 require "configuration.floating-clients"
 require "configuration.monitor"
 require 'configuration.music-notification'
+require 'configuration.focusurgent'
+require 'configuration.floating-ontop'

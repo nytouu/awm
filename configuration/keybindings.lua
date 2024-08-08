@@ -1,5 +1,6 @@
 ---@diagnostic disable: undefined-global
 local awful = require "awful"
+local naughty = require 'naughty'
 
 local function set_keybindings ()
     awful.keyboard.append_global_keybindings({
@@ -10,19 +11,15 @@ local function set_keybindings ()
                 awesome.emit_signal('toggle::exit')
             end,
             {description = "quit awesome", group = "awesome"}),
-        -- awful.key({ modkey,           }, "Return", function () awful.spawn("sh -c 'wmctrl -x -a tabbed || tabbed alacritty --embed'") end,
-        --           {description = "open or focus a terminal", group = "launcher"}),
-        -- awful.key({ modkey, "Control" }, "Return", function () awful.spawn("tabbed alacritty --embed") end,
-        --           {description = "open a terminal", group = "launcher"}),
-        awful.key({ modkey,           }, "Return", function() awful.spawn(terminal .. " -e tmux") end,
+        awful.key({ modkey,           }, "Return", function() awful.spawn(terminal) end,
                   {description = "open a terminal", group = "launcher"}),
-        awful.key(
-            { modkey, "Shift" }, 'd',
-            function ()
-                awesome.emit_signal('toggle::dashboard')
-            end,
-            { description = 'toggle the dashboard', group = 'launcher '}
-        ),
+        -- awful.key(
+        --     { modkey, "Shift" }, 'd',
+        --     function ()
+        --         awesome.emit_signal('toggle::dashboard')
+        --     end,
+        --     { description = 'toggle the dashboard', group = 'launcher '}
+        -- ),
         awful.key({ modkey,         }, "c",
             function ()
                 awesome.emit_signal('toggle::control')
@@ -41,11 +38,11 @@ local function set_keybindings ()
 
     -- Tags related keybindings
     awful.keyboard.append_global_keybindings({
-        awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
+        awful.key({ modkey, "Shift"   }, "Left",   awful.tag.viewprev,
                   {description = "view previous", group = "tag"}),
-        awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
+        awful.key({ modkey, "Shift"   }, "Right",  awful.tag.viewnext,
                   {description = "view next", group = "tag"}),
-        awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
+        awful.key({ modkey, "Shift"   }, "Escape", awful.tag.history.restore,
                   {description = "go back", group = "tag"}),
     })
 
@@ -65,13 +62,13 @@ local function set_keybindings ()
 			awesome.emit_signal("open::osd")
 		end,
         {description = "raise volume", group = "audio"}),
-        awful.key({ }, "XF86AudioLowerVolume", function () 
-			awful.spawn("pamixer -d 1") 
+        awful.key({ }, "XF86AudioLowerVolume", function ()
+			awful.spawn("pamixer -d 1")
 			awesome.emit_signal("open::osd")
 		end,
         {description = "lower volume", group = "audio"}),
-        awful.key({ }, "XF86AudioMute", function () 
-			awful.spawn("pamixer -t") 
+        awful.key({ }, "XF86AudioMute", function ()
+			awful.spawn("pamixer -t")
 			awesome.emit_signal("open::osd")
 		end,
         {description = "toggle mute", group = "audio"}),
@@ -81,13 +78,17 @@ local function set_keybindings ()
         {description = "screenshot", group = "utils"}),
         awful.key({ modkey, "Shift" }, "p", function () awful.spawn("takescreenshot slop") end,
         {description = "slop screenshot", group = "utils"}),
-        awful.key({ }, "XF86MonBrightnessDown", function () 
+        awful.key({ modkey, "Shift" }, "d", function () naughty.toggle() end,
+        {description = "toggle notifications", group = "utils"}),
+        awful.key({ modkey, "Shift" }, "c", function () awful.spawn("sh -c '[ ! $(pgrep picom) ] && picom || pkill picom'") end,
+        {description = "toggle compositor", group = "utils"}),
+        awful.key({ }, "XF86MonBrightnessDown", function ()
 			awful.spawn("brightnessctl s 3-")
 			awesome.emit_signal("open::osdb")
 		end,
         {description = "reduce brightness", group = "utils"}),
         awful.key({ }, "XF86MonBrightnessUp", function ()
-			awful.spawn("brightnessctl s +3") 
+			awful.spawn("brightnessctl s +3")
 			awesome.emit_signal("open::osdb")
 		end,
         {description = "increase brightness", group = "utils"}),
@@ -114,7 +115,7 @@ local function set_keybindings ()
         {description = "open file browser", group = "launcher"}),
         awful.key({ modkey,           }, "b", function () awful.spawn("firefox") end,
         {description = "open browser", group = "launcher"}),
-        awful.key({ modkey, "Shift"   }, "m", function () awful.spawn(terminal .. " -c ncmpcpp -n ncmpcpp ncmpcpp") end,
+        awful.key({ modkey, "Shift"   }, "m", function () awful.spawn("st -c ncmpcpp -n ncmpcpp ncmpcpp") end,
         {description = "open music", group = "launcher"}),
     })
 

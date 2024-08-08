@@ -5,53 +5,51 @@ local awful = require 'awful'
 local beautiful = require 'beautiful'
 
 local hour = wibox.widget {
-    format = ' %H',
-    align = 'center',
-    font = beautiful.font_name .. ' 13',
-    widget = wibox.widget.textclock,
+	format = ' %H',
+	align = 'center',
+	font = beautiful.font_name .. ' Bold 13',
+	widget = wibox.widget.textclock,
 }
 
 local minutes = wibox.widget {
-    format = ':%M ',
-    align = 'center',
-    font = beautiful.font_name .. ' 13',
-    widget = wibox.widget.textclock,
+	format = ':%M ',
+	align = 'center',
+	font = beautiful.font_name .. ' Bold 13',
+	widget = wibox.widget.textclock,
 }
 
 local day = wibox.widget {
-    format = ' %a %d %b ',
-    align = 'center',
-    font = beautiful.font_name .. ' 11',
-    widget = wibox.widget.textclock,
+	format = ' %a %d %b ',
+	align = 'center',
+	font = beautiful.font_name .. ' 9',
+	widget = wibox.widget.textclock,
 }
 
 local clock_container = wibox.widget {
-    {
-        {
-            {
-                hour,
-                minutes,
-				day,
-                spacing = 1,
-                layout = wibox.layout.fixed.horizontal,
-            },
-            left = 5,
-            right = 5,
-            top = 3,
-            bottom = 3,
-            widget = wibox.container.margin,
-        },
-        shape = helpers.mkroundedrect(),
-        widget = wibox.container.background,
-        bg = beautiful.dimblack,
-    },
-    top = 5,
-    bottom = 5,
-    widget = wibox.container.margin,
+	{
+		{
+			hour,
+			minutes,
+			day,
+			spacing = 1,
+			layout = wibox.layout.fixed.horizontal,
+		},
+		left = 5,
+		right = 5,
+		top = 3,
+		bottom = 3,
+		widget = wibox.container.margin,
+	},
+	shape = helpers.mkroundedrect(),
+	widget = wibox.container.background,
+	bg = beautiful.dimblack,
 }
 
--- clock_container:add_button(awful.button({}, 1, function ()
---     awesome.emit_signal('toggle::dashboard')
--- end))
+helpers.hover_widget(clock_container)
+
+clock_container:add_button(awful.button({}, 1, function()
+	awesome.emit_signal('toggle::calendar')
+end))
+
 
 return clock_container

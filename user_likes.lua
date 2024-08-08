@@ -1,6 +1,6 @@
 local menubar = require "menubar"
 
-terminal = "st"
+terminal = "tabbed -c -k -b -r 2 st -w ''"
 explorer = "thunar"
 browser = "firefox"
 launcher = "rofi -show drun"

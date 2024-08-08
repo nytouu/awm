@@ -2,6 +2,7 @@ local xresources = require("beautiful.xresources")
 local gears = require "gears"
 local gfs = require("gears.filesystem")
 local colors = require("colors.adwaita_dark")
+local helpers= require("helpers")
 
 local dpi = xresources.apply_dpi
 
@@ -16,12 +17,12 @@ local titlebar_assets_path = assets_path .. "titlebar/"
 
 local theme = {}
 
-theme.user= "nytou"
+theme.user = "nytou"
 
 -- fonts
-theme.font_name = 'SF Pro Display'
-theme.nerd_font = 'Liga SFMono Nerd Font'
-theme.mono_font = 'Liga SFMono Nerd Font'
+theme.font_name = 'Torus Pro'
+theme.nerd_font = 'MartianMono Nerd Font'
+theme.mono_font = 'MartianMono Nerd Font'
 theme.material_icons = 'Material Icons'
 theme.font_size = '10'
 theme.font = theme.font_name .. ' ' .. theme.font_size
@@ -37,6 +38,7 @@ theme.yellow = colors.yellow
 theme.magenta = colors.magenta
 theme.green = colors.green
 theme.blue = colors.blue
+theme.dimblue = colors.dimblue
 theme.cyan = colors.cyan
 theme.aqua = colors.aqua
 
@@ -76,11 +78,12 @@ theme.actions = {
 theme.bar_height = 38
 
 -- borders
-theme.border_width = dpi(1)
+theme.border_width = dpi(2)
+theme.border_widget = dpi(2)
 -- theme.border_color_normal = theme.bg_normal
 -- theme.border_color_active = theme.bg_normal
 -- theme.border_color_marked = theme.bg_normal
-theme.border_radius = dpi(12)
+theme.border_radius = dpi(8)
 
 theme.border_normal = "#000000"
 theme.border_color  = colors.focus
@@ -88,8 +91,13 @@ theme.border_focus  = colors.focus
 theme.border_marked = colors.marked
 
 -- gaps
-theme.useless_gap = dpi(10)
+theme.useless_gap = dpi(6)
 theme.gap_single_client = true
+
+-- edge snap
+theme.snap_bg       		= theme.grey
+theme.snap_border_width     = theme.border_width * 3
+theme.snapper_gap   		= theme.useless_gap * 2
 
 -- tasklist
 theme.tasklist_plain_task_name = true
@@ -102,7 +110,6 @@ theme.taglist_bg = theme.bg_normal
 theme.taglist_bg_focus = theme.blue
 theme.taglist_bg_occupied = theme.grey
 theme.taglist_bg_empty = theme.black
--- theme.taglist_bg_empty = theme.light_black
 
 -- systray
 theme.systray_icon_spacing = dpi(12)
@@ -178,7 +185,7 @@ theme.fallback_music = assets_path .. 'fallback-music.png'
 -- fallback notification icon
 theme.fallback_notif_icon = gears.color.recolor_image(icons_path .. 'hints.svg', theme.blue)
 
-theme.icon_theme = "/nix/store/ggkfpmvs41rpjdg5byr7p0wbrjqhd33g-papirus-icon-theme-20230301/share/icons/Papirus-Dark/24x24/"
+theme.icon_theme = "/nix/store/zkvcnamnzgzh1kphlw9ad3dg2qhb4174-papirus-icon-theme-20240501/share/icons/Papirus-Dark/24x24/"
 
 -- task preview
 theme.task_preview_widget_border_radius = dpi(7)
@@ -188,15 +195,15 @@ theme.task_preview_widget_border_width = 0
 theme.task_preview_widget_margin = dpi(10)
 
 -- tag preview
-theme.tag_preview_widget_border_radius = dpi(7)
-theme.tag_preview_client_border_radius = dpi(7)
-theme.tag_preview_client_opacity = 0.5
+theme.tag_preview_widget_border_radius = dpi(6)
+theme.tag_preview_client_border_radius = dpi(6)
+theme.tag_preview_client_opacity = 1.0
 theme.tag_preview_client_bg = theme.bg_lighter
 theme.tag_preview_client_border_color = theme.blue
-theme.tag_preview_client_border_width = 1
+theme.tag_preview_client_border_width = 2
 theme.tag_preview_widget_bg = theme.bg_normal
 theme.tag_preview_widget_border_color = theme.bg_normal
-theme.tag_preview_widget_border_width = 0
+theme.tag_preview_widget_border_width = 2
 theme.tag_preview_widget_margin = dpi(7)
 
 -- tooltip

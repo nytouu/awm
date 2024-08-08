@@ -337,7 +337,7 @@ function helpers.get_notification_widget(n)
 						bg = beautiful.black,
 						widget = wibox.container.background,
 					},
-					widget = naughty.list.actions,
+					-- widget = naughty.list.actions,
 				},
 				margins = dpi(12),
 				widget = wibox.container.margin,
@@ -645,6 +645,36 @@ end
 
 helpers.gc = function(widget, id)
   return widget:get_children_by_id(id)[1]
+end
+
+helpers.hover_widget = function(widget)
+	widget:connect_signal("mouse::enter", function()
+		if widget.bg ~= beautiful.grey then
+			widget.bg = beautiful.light_black
+		end
+	end)
+
+	widget:connect_signal("mouse::leave", function()
+		if widget.bg ~= beautiful.grey then
+			widget.bg = beautiful.dimblack
+		end
+	end)
+
+	-- add buttons and commands
+	widget:connect_signal("button::press", function()
+		widget.bg = beautiful.grey
+	end)
+
+	widget:connect_signal("button::release", function()
+		gears.timer {
+			timeout   = 0.1,
+			autostart = true,
+			single_shot = true,
+			callback  = function()
+				widget.bg = beautiful.dimblack
+			end
+		}
+	end)
 end
 
 return helpers

@@ -28,7 +28,7 @@ awful.screen.connect_for_each_screen(function (s)
         height = dimensions.height,
         bg = beautiful.bg_normal .. '00',
         fg = beautiful.fg_normal,
-        x = s.geometry.x + 1456,
+        x = s.geometry.x + 1406,
         y = -2,
     }
 

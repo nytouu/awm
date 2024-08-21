@@ -37,35 +37,13 @@ local dock = function(s)
 	-- autohiding the dock
 	local function check_for_dock_hide()
 		if not awful.screen.focused().selected_tag then
-			-- if not dock.visible then -- No tag selected, so make the dock visible
-				-- local timed = rubato.timed {
-				-- 	duration = 1 / 4,
-				-- 	intro = 1 / 9,
-				-- 	override_dt = true,
-				-- 	subscribed = function(pos)
-				-- 		dock.y = dpi(1135 - pos)
-				-- 	end
-				-- }
-				-- timed.target = 120
 				dock.visible = true
-			-- end
 			return
 		end
 
 		for _, client in ipairs(awful.screen.focused().selected_tag:clients()) do
 			if client.fullscreen then
-				-- if dock.visible then -- Disable dock on fullscreen
-					-- local timed = rubato.timed {
-					-- 	duration = 1 / 4,
-					-- 	intro = 1 / 9,
-					-- 	override_dt = true,
-					-- 	subscribed = function(pos)
-					-- 		dock.y = dpi(1225 + pos)
-					-- 	end
-					-- }
-					-- timed.target = 120
 					dock.visible = false
-				-- end
 				return
 			end
 		end
@@ -108,14 +86,6 @@ local dock = function(s)
 			end
 		else
 			dock.visible = false
-            -- local timed = rubato.timed {
-            --     duration = 1 / 4,
-            --     override_dt = true,
-            --     subscribed = function(pos)
-            --         dock.y = dpi((1145 - 120) + pos)
-            --     end
-            -- }
-            -- timed.target = 120
 		end
 	end
 
@@ -276,6 +246,11 @@ local dock = function(s)
 				command     = "unityhub"
 			},
 			{
+				name        = "planify",
+				convert     = "io.elementary.tasks",
+				command     = "io.github.alainm23.planify"
+			},
+			{
 				name        = "vesktop",
 				convert     = "discord",
 				command     = "vesktop"
@@ -365,8 +340,8 @@ local dock = function(s)
 				count   = 0,
 				id      = 2,
 				clients = {},
-				name    = "firefox",
-				class   = "firefox"
+				name    = "librewolf",
+				class   = "librewolf"
 			},
 			{
 				count   = 0,
@@ -386,19 +361,54 @@ local dock = function(s)
 				count   = 0,
 				id      = 5,
 				clients = {},
+				name    = "planify",
+				class   = "planify"
+			},
+			{
+				count   = 0,
+				id      = 6,
+				clients = {},
+				name    = "unityhub",
+				class   = "unityhub"
+			},
+			{
+				count   = 0,
+				id      = 7,
+				clients = {},
+				name    = "gimp",
+				class   = "gimp"
+			},
+			{
+				count   = 0,
+				id      = 8,
+				clients = {},
+				name    = "aseprite",
+				class   = "aseprite"
+			},
+			{
+				count   = 0,
+				id      = 9,
+				clients = {},
+				name    = "blender",
+				class   = "blender"
+			},
+			{
+				count   = 0,
+				id      = 10,
+				clients = {},
 				name    = "osu-lazer",
 				class   = "osu-lazer"
 			},
 			{
 				count   = 0,
-				id      = 6,
+				id      = 11,
 				clients = {},
 				name    = "steam",
 				class   = "steam"
 			},
             {
                 count   = 0,
-                id      = 7,
+                id      = 12,
                 clients = {},
                 name    = "vesktop",
                 class   = "vesktop"
@@ -409,6 +419,7 @@ local dock = function(s)
             "tabbed",
             "st",
             "firefox",
+            "librewolf",
             "discord",
             "thunar",
             "neorg",

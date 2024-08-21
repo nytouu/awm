@@ -27,6 +27,7 @@ awful.screen.connect_for_each_screen(function(s)
 		border_width = beautiful.border_widget,
 		border_color = beautiful.light_black,
 		screen = s,
+		type = "utility"
 	}
 
 	local self = s.calendar.popup

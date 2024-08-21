@@ -6,8 +6,8 @@ local gears     = require("gears")
 local bling     = require("modules.bling")
 local helpers   = require("helpers")
 local playerctl = bling.signal.playerctl.lib{
-    -- ignore = "firefox",
-    -- player = {"mpd", "%any"}
+    ignore = "firefox",
+    player = {"mpd", "%any"}
 }
 local art       = wibox.widget {
     image = helpers.cropSurface(1.71, gears.surface.load_uncached(beautiful.fallback_music)),

@@ -2,7 +2,7 @@ local menubar = require "menubar"
 
 terminal = "tabbed -c -k -b -r 2 st -w ''"
 explorer = "thunar"
-browser = "firefox"
+browser = "librewolf"
 launcher = "rofi -show drun"
 editor = os.getenv("EDITOR") or "nvim"
 visual_editor = "code" -- vscode

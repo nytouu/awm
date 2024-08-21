@@ -32,7 +32,7 @@ local function set_keybindings ()
             end,
             { description = 'toggle the notifcenter', group = 'launcher'}
         ),
-        awful.key({ modkey,         }, "d", function () awful.spawn("rofi -show drun") end,
+        awful.key({ modkey,         }, "d", function () awful.spawn(launcher) end,
                   {description = "Open rofi", group = "launcher"}),
     })
 
@@ -111,9 +111,9 @@ local function set_keybindings ()
         awful.key({ "Shift" }, "XF86AudioLowerVolume", function () awful.spawn("mpc volume -2") end,
         {description = "lower volume", group = "music"}),
 
-        awful.key({ modkey,           }, "n", function () awful.spawn("Thunar") end,
+        awful.key({ modkey,           }, "n", function () awful.spawn(explorer) end,
         {description = "open file browser", group = "launcher"}),
-        awful.key({ modkey,           }, "b", function () awful.spawn("firefox") end,
+        awful.key({ modkey,           }, "b", function () awful.spawn(browser) end,
         {description = "open browser", group = "launcher"}),
         awful.key({ modkey, "Shift"   }, "m", function () awful.spawn("st -c ncmpcpp -n ncmpcpp ncmpcpp") end,
         {description = "open music", group = "launcher"}),

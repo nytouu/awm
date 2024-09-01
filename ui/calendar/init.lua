@@ -6,15 +6,15 @@ local gears = require 'gears'
 
 require 'ui.calendar.listener'
 
-awful.screen.connect_for_each_screen(function(s)
-	s.calendar = {}
+awful.screen.connect_for_each_screen(function()
+	screen.primary.calendar = {}
 
 	local dimensions = {
 		width = 300,
 		height = 265
 	}
 
-	s.calendar.popup = wibox {
+	screen.primary.calendar.popup = wibox {
 		visible = false,
 		ontop = true,
 		width = dimensions.width,
@@ -25,12 +25,12 @@ awful.screen.connect_for_each_screen(function(s)
 		fg = beautiful.fg_normal,
 		shape = helpers.mkroundedrect(8),
 		border_width = beautiful.border_widget,
-		border_color = beautiful.light_black,
-		screen = s,
+		border_color = beautiful.grey,
+		screen = screen.primary,
 		type = "utility"
 	}
 
-	local self = s.calendar.popup
+	local self = screen.primary.calendar.popup
 
 	self:setup {
 		{
@@ -81,19 +81,19 @@ awful.screen.connect_for_each_screen(function(s)
 		widget = wibox.container.background,
 	}
 
-	function s.calendar.open()
+	function screen.primary.calendar.open()
 		self.visible = true
 	end
 
-	function s.calendar.hide()
+	function screen.primary.calendar.hide()
 		self.visible = false
 	end
 
-	function s.calendar.toggle()
+	function screen.primary.calendar.toggle()
 		if self.visible then
-			s.calendar.hide()
+			screen.primary.calendar.hide()
 		else
-			s.calendar.open()
+			screen.primary.calendar.open()
 		end
 	end
 end)

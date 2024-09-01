@@ -78,6 +78,8 @@ local function set_keybindings ()
         {description = "screenshot", group = "utils"}),
         awful.key({ modkey, "Shift" }, "p", function () awful.spawn("takescreenshot slop") end,
         {description = "slop screenshot", group = "utils"}),
+        awful.key({ modkey, "Shift" }, "r", function () awful.spawn("dmenurecord") end,
+        {description = "slop screenshot", group = "utils"}),
         awful.key({ modkey, "Shift" }, "d", function () naughty.toggle() end,
         {description = "toggle notifications", group = "utils"}),
         awful.key({ modkey, "Shift" }, "c", function () awful.spawn("sh -c '[ ! $(pgrep picom) ] && picom || pkill picom'") end,

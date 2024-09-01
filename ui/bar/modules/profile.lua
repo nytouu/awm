@@ -7,7 +7,7 @@ local awful = require("awful")
 local profile = wibox.widget {
 	{
 		widget = wibox.widget.imagebox,
-		image = beautiful.nixos,
+		image = beautiful.logo,
 		forced_height = 24,
 		forced_width = 24,
 		valign = 'center',
@@ -17,7 +17,7 @@ local profile = wibox.widget {
 	},
 	{
 		font = beautiful.font_name .. " 11",
-		markup = helpers.colorize_text("  Search", beautiful.fg_normal),
+		markup = helpers.colorize_text("Search", beautiful.fg_normal),
 		widget = wibox.widget.textbox,
 		valign = "center",
 		align = "center"

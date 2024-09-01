@@ -75,9 +75,10 @@ local vbar_batstatus = wibox.widget {
 
 local battery_tooltip = helpers.make_popup_tooltip("-1%", function (d)
     return awful.placement.top_right(d, {
+		honor_workarea = true,
         margins = {
             right = beautiful.useless_gap,
-            top = beautiful.bar_height + beautiful.useless_gap * 2
+            top = beautiful.useless_gap * 2
         }
     })
 end)

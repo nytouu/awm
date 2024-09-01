@@ -4,7 +4,6 @@ local wibox     = require("wibox")
 local gears     = require("gears")
 local helpers   = require("helpers")
 local beautiful = require("beautiful")
-local rubato    = require("modules.rubato")
 
 local dpi       = beautiful.xresources.apply_dpi
 local geticon   = require("ui.dock.geticon")
@@ -17,14 +16,14 @@ local layout     = wibox.layout.fixed.horizontal
 local rlayout    = wibox.layout.fixed.vertical
 local flexlayout = wibox.layout.flex.horizontal
 
-local dock = function(s)
+local dock = function()
 	-- this is the main dock
 	local dock  = awful.popup {
 		widget    = wibox.container.background,
 		ontop     = true,
 		bg        = beautiful.bg_normal,
 		visible   = true,
-		screen    = s,
+		screen    = screen.primary,
 		height    = 100,
 		width     = 600,
 		type = "dock",
@@ -106,7 +105,7 @@ local dock = function(s)
 		type    = "desktop",
 		height  = 1,
 		width   = 200,
-		screen  = s,
+		screen  = screen.primary,
 		ontop   = true,
 		visible = true,
 		bg      = beautiful.border_focus .. 'ff'
@@ -225,8 +224,8 @@ local dock = function(s)
 			},
 			{
 				name        = "osu!",
-				convert     = "osu-lazer",
-				command     = "osu!"
+				-- convert     = "osu-lazer",
+				command     = "osu"
 			},
 			{
 				name        = "rofi",
@@ -236,9 +235,19 @@ local dock = function(s)
 				command     = "rofi -show drun"
 			},
 			{
+				name        = "gimp-2.10",
+				convert     = "gimp",
+				command     = "gimp"
+			},
+			{
 				name        = "godot",
 				convert     = "godot",
 				command     = "godot4"
+			},
+			{
+				name        = "discord",
+				convert     = "discord",
+				command     = "Discord"
 			},
 			{
 				name        = "Unity",
@@ -376,7 +385,7 @@ local dock = function(s)
 				id      = 7,
 				clients = {},
 				name    = "gimp",
-				class   = "gimp"
+				class   = "gimp-2.10"
 			},
 			{
 				count   = 0,
@@ -410,8 +419,8 @@ local dock = function(s)
                 count   = 0,
                 id      = 12,
                 clients = {},
-                name    = "vesktop",
-                class   = "vesktop"
+                name    = "discord",
+                class   = "discord"
             },
 		}
 
@@ -428,6 +437,8 @@ local dock = function(s)
             "unityhub",
             "Unity",
             "gimp",
+            "Gimp-2.10",
+            "gimp-2.10",
             "blender",
             "lmms",
             "vesktop",
@@ -483,6 +494,7 @@ local dock = function(s)
 				createDockElements(),
 				layout  = layout
 			},
+            screen = screen.primary,
 			widget    = wibox.container.margin,
 			margins   = {
 				top     = 10,
@@ -518,6 +530,6 @@ local dock = function(s)
 
 end
 
-screen.connect_signal('request::desktop_decoration', function(s)
-	dock(s)
+screen.connect_signal('request::desktop_decoration', function()
+	dock()
 end)

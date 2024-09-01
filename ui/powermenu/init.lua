@@ -9,11 +9,11 @@ local music     = require("ui.powermenu.modules.music")
 local bat       = require("ui.powermenu.modules.bat")
 local top       = require("ui.powermenu.modules.topbar")
 
-awful.screen.connect_for_each_screen(function(s)
+awful.screen.connect_for_each_screen(function()
 	local exit = wibox({
-		screen = s,
-		width = s.geometry.width,
-		height = s.geometry.height,
+		screen = screen.primary,
+		width = screen.primary.geometry.width,
+		height = screen.primary.geometry.height,
 		bg = beautiful.bg_normal .. "00",
 		ontop = true,
 		visible = false,
@@ -149,10 +149,10 @@ awful.screen.connect_for_each_screen(function(s)
 	local buttons = wibox.widget {
 
 		{
-			createButton("󰐥 ", "Power", "poweroff", beautiful.red),
-			createButton("󰦛 ", "Reboot", "reboot", beautiful.green),
+			createButton("󰐥 ", "Power", "loginctl poweroff", beautiful.red),
+			createButton("󰦛 ", "Reboot", "loginctl reboot", beautiful.green),
 			createButton("󰌾 ", "Lock", "lock", beautiful.blue),
-			createButton("󰖔 ", "Sleep", "lock && sleep 0.2 && systemctl suspend", beautiful.yellow),
+			createButton("󰖔 ", "Sleep", "lock && sleep 0.2 && loginctl suspend", beautiful.yellow),
 			createButton("󰈆 ", "Log Out", "loginctl kill-user $USER", beautiful.magenta),
 			layout = wibox.layout.fixed.horizontal,
 			spacing = 20,

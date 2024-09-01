@@ -22,7 +22,7 @@ local createSlider = function(icon, signal, command)
     handle_border_width = 2,
     handle_width        = dpi(15),
     handle_margins      = { top = 7, right = -3, left = 1 },
-    handle_border_color = beautiful.bg_normal,
+    handle_border_color = beautiful.dimblack,
     value               = 25,
     forced_height       = 30,
     maximum             = 100,

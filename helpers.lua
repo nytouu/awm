@@ -9,6 +9,7 @@ local cairo = require("lgi").cairo
 
 local color = require 'modules.color'
 local rubato = require 'modules.rubato'
+local json = require 'modules.json'
 
 local helpers = {}
 

@@ -103,7 +103,7 @@ local widget       = wibox.widget {
 		createButton("sh -c '[ ! $(pgrep picom) ] && picom || pkill picom'", "󰘷 ", "<b>Compositor</b>", "Enabled",
 			"Disabled", "compositor"),
 		createButton('pamixer --source 0 -t', "󰍬 ", "<b>Microphone</b>",
-			"Its Muted", "It is turned on", "mic"),
+			"Microphone Muted", "Microphone On", "mic"),
 		spacing = 20,
 		layout = wibox.layout.flex.horizontal
 	},

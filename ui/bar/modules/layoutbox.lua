@@ -14,14 +14,15 @@ local function get_layoutbox(s)
     layoutbox._layoutbox_tooltip:remove_from_object(layoutbox)
 
     local function get_layoutname()
-        return 'Layout ' .. helpers.capitalize(awful.layout.get(s).name)
+        return 'Layout ' .. awful.layout.get(s).name
     end
 
     local layoutbox_tooltip = helpers.make_popup_tooltip(get_layoutname(), function (d)
         return awful.placement.top_left(d, {
+			honor_workarea = true,
             margins = {
-                left = beautiful.useless_gap,
-                top = beautiful.bar_height + beautiful.useless_gap * 2
+                left = beautiful.useless_gap * 7,
+                top = beautiful.useless_gap * 2
             }
         })
     end)

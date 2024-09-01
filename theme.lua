@@ -83,15 +83,15 @@ theme.border_widget = dpi(2)
 -- theme.border_color_normal = theme.bg_normal
 -- theme.border_color_active = theme.bg_normal
 -- theme.border_color_marked = theme.bg_normal
-theme.border_radius = dpi(8)
+theme.border_radius = dpi(12)
 
-theme.border_normal = "#000000"
+theme.border_normal = colors.normal
 theme.border_color  = colors.focus
 theme.border_focus  = colors.focus
 theme.border_marked = colors.marked
 
 -- gaps
-theme.useless_gap = dpi(6)
+theme.useless_gap = dpi(8)
 theme.gap_single_client = true
 
 -- edge snap
@@ -128,14 +128,15 @@ theme.titlebar_bg_focus = theme.bg_title_alt
 theme.titlebar_fg = theme.fg_normal
 
 -- close
-theme.titlebar_close_button_normal = gears.color.recolor_image(titlebar_assets_path .. "circle.png", theme.dimblack)
-theme.titlebar_close_button_focus = gears.color.recolor_image(titlebar_assets_path .. "circle.png", theme.red)
+theme.titlebar_close_button_normal = gears.color.recolor_image(titlebar_assets_path .. "close.png", theme.grey)
+theme.titlebar_close_button_focus = gears.color.recolor_image(titlebar_assets_path .. "close.png", theme.fg_normal)
+theme.titlebar_close_button_active = gears.color.recolor_image(titlebar_assets_path .. "close.png", theme.fg_normal)
 
 -- maximized
-theme.titlebar_maximized_button_normal_active = gears.color.recolor_image(titlebar_assets_path .. "circle.png", theme.dimblack)
-theme.titlebar_maximized_button_normal_inactive = gears.color.recolor_image(titlebar_assets_path .. "circle.png", theme.dimblack)
-theme.titlebar_maximized_button_focus_active = gears.color.recolor_image(titlebar_assets_path .. "circle.png", theme.green)
-theme.titlebar_maximized_button_focus_inactive = gears.color.recolor_image(titlebar_assets_path .. "circle.png", theme.green)
+theme.titlebar_maximized_button_normal_active = gears.color.recolor_image(titlebar_assets_path .. "maximize.png", theme.fg_normal)
+theme.titlebar_maximized_button_normal_inactive = gears.color.recolor_image(titlebar_assets_path .. "maximize.png", theme.grey)
+theme.titlebar_maximized_button_focus_active = gears.color.recolor_image(titlebar_assets_path .. "maximize.png", theme.fg_normal)
+theme.titlebar_maximized_button_focus_inactive = gears.color.recolor_image(titlebar_assets_path .. "maximize.png", theme.fg_normal)
 
 -- minimize
 theme.titlebar_minimize_button_normal = gears.color.recolor_image(titlebar_assets_path .. "circle.png", theme.dimblack)
@@ -177,7 +178,7 @@ theme.network_disconnected = '󰖪 '
 
 -- pfp
 theme.pfp = assets_path .. 'pfp.png'
-theme.nixos = assets_path .. 'nixos.png'
+theme.logo = assets_path .. 'void.png'
 
 -- fallback music
 theme.fallback_music = assets_path .. 'fallback-music.png'
@@ -185,7 +186,8 @@ theme.fallback_music = assets_path .. 'fallback-music.png'
 -- fallback notification icon
 theme.fallback_notif_icon = gears.color.recolor_image(icons_path .. 'hints.svg', theme.blue)
 
-theme.icon_theme = "/nix/store/zkvcnamnzgzh1kphlw9ad3dg2qhb4174-papirus-icon-theme-20240501/share/icons/Papirus-Dark/24x24/"
+-- theme.icon_theme = "~/.local/share/icons/Colloid/"
+theme.icon_theme = "/usr/share/icons/Papirus-Dark/24x24/"
 
 -- task preview
 theme.task_preview_widget_border_radius = dpi(7)

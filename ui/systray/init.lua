@@ -5,12 +5,12 @@ local beautiful = require 'beautiful'
 -- listening awesomewm events
 require 'ui.systray.listener'
 
-awful.screen.connect_for_each_screen(function (s)
-    s.systray = {}
+awful.screen.connect_for_each_screen(function ()
+    screen.primary.systray = {}
 
     local capi = {
         awesome = awesome,
-        screen = s,
+        screen = screen.primary,
     }
     local num_entries = capi.awesome.systray()
 
@@ -20,7 +20,7 @@ awful.screen.connect_for_each_screen(function (s)
     }
 
 
-    s.systray.popup = wibox {
+    screen.primary.systray.popup = wibox {
         visible = false,
         ontop = true,
 		type = "popup_menu",
@@ -28,11 +28,11 @@ awful.screen.connect_for_each_screen(function (s)
         height = dimensions.height,
         bg = beautiful.bg_normal .. '00',
         fg = beautiful.fg_normal,
-        x = s.geometry.x + 1406,
+        x = screen.primary.geometry.x + 1406,
         y = -2,
     }
 
-    local self = s.systray.popup
+    local self = screen.primary.systray.popup
 
     self:setup {
         {
@@ -40,7 +40,7 @@ awful.screen.connect_for_each_screen(function (s)
                 {
                     widget = wibox.widget.systray,
                     horizontal = false,
-                    screen = s,
+                    screen = screen.primary,
                     base_size = 24,
                 },
                 layout = wibox.layout.fixed.horizontal,
@@ -53,19 +53,19 @@ awful.screen.connect_for_each_screen(function (s)
         widget = wibox.container.background,
     }
 
-    function s.systray.toggle()
+    function screen.primary.systray.toggle()
         if self.visible then
-            s.systray.hide()
+            screen.primary.systray.hide()
         else
-            s.systray.show()
+            screen.primary.systray.show()
         end
     end
 
-    function s.systray.show()
+    function screen.primary.systray.show()
         self.visible = true
     end
 
-    function s.systray.hide()
+    function screen.primary.systray.hide()
         self.visible = false
     end
 end)

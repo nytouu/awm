@@ -44,6 +44,7 @@ local info = wibox.widget {
 local osd = awful.popup {
 	visible = false,
 	ontop = true,
+	screen = screen.primary,
 	minimum_height = 60,
 	maximum_height = 60,
 	minimum_width = 290,

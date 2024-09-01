@@ -45,8 +45,6 @@ local label     = wibox.widget {
 	widget = wibox.widget.textbox,
 }
 
-
-
 local check_caps = function()
 	awful.spawn.easy_async_with_shell(
 		'xset q | grep Caps | cut -d: -f3 | cut -d0 -f1 | tr -d \' \'',
@@ -68,7 +66,8 @@ local promptbox = wibox {
 	ontop = true,
 	shape = helpers.mkroundedrect(10),
 	visible = false,
-	type = "splash"
+	type = "splash",
+	screen = screen.primary,
 }
 
 local background = wibox({
@@ -76,7 +75,8 @@ local background = wibox({
 	height = dpi(1080),
 	visible = false,
 	ontop = true,
-	type = "splash"
+	type = "splash",
+	screen = screen.primary,
 })
 
 

@@ -58,7 +58,7 @@ end)
 awful.screen.connect_for_each_screen(function(s)
     local music = wibox({
         shape = helpers.mkroundedrect(8),
-        screen = s,
+        screen = screen.primary,
         width = 400,
         height = 200,
         bg = beautiful.bg_normal,

@@ -188,7 +188,7 @@ local function createicon(icon, label, exec, ty)
       {
         {
           {
-            markup = helpers.colorize_text(label, beautiful.fg_normal),
+            markup = helpers.colorize_text(label, "#ffffff"),
             valign = "top",
             font = beautiful.font_name .. " 11",
             align = "center",

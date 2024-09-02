@@ -225,7 +225,7 @@ local dock = function()
 			{
 				name        = "osu!",
 				-- convert     = "osu-lazer",
-				command     = "osu"
+				command     = "gtk-launch osu!"
 			},
 			{
 				name        = "rofi",

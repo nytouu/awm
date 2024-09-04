@@ -7,7 +7,7 @@ local animation = require("modules.animation")
 
 -- osd --
 
-local info = wibox.widget {
+local info = wibox.widget({
 	widget = wibox.container.margin,
 	margins = 20,
 	{
@@ -25,7 +25,7 @@ local info = wibox.widget {
 			{
 				widget = wibox.widget.textbox,
 				id = "text",
-				halign = "center"
+				halign = "center",
 			},
 		},
 		{
@@ -38,10 +38,10 @@ local info = wibox.widget {
 			background_color = beautiful.dimblack,
 			color = beautiful.blue,
 		},
-	}
-}
+	},
+})
 
-local osd = awful.popup {
+local osd = awful.popup({
 	visible = false,
 	ontop = true,
 	screen = screen.primary,
@@ -51,21 +51,21 @@ local osd = awful.popup {
 	maximum_width = 290,
 	shape = helpers.mkroundedrect(6),
 	placement = function(d)
-		awful.placement.bottom(d, { margins = 20, honor_workarea = true, })
+		awful.placement.bottom(d, { margins = 20, honor_workarea = true })
 	end,
 	widget = info,
 
 	border_width = beautiful.border_widget,
 	border_color = beautiful.grey,
-}
+})
 
-local anim = animation:new {
+local anim = animation:new({
 	duration = 0.3,
 	easing = animation.easing.linear,
 	update = function(self, pos)
 		info:get_children_by_id("progressbar")[1].value = pos
 	end,
-}
+})
 
 -- volume --
 
@@ -88,10 +88,10 @@ local function osd_hide()
 	osd_timer:stop()
 end
 
-local osd_timer = gears.timer {
+local osd_timer = gears.timer({
 	timeout = 4,
-	callback = osd_hide
-}
+	callback = osd_hide,
+})
 
 local function osd_toggle()
 	if not osd.visible then

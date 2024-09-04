@@ -1,14 +1,13 @@
-local awful     = require("awful")
-local gears = require 'gears'
-local wibox     = require("wibox")
+local awful = require("awful")
+local gears = require("gears")
+local wibox = require("wibox")
 local beautiful = require("beautiful")
-local helpers = require 'helpers'
+local helpers = require("helpers")
 
-local bluetooth = require 'ui.bar.modules.bluetooth'
-local wifi = require 'ui.bar.modules.wifi'
+local bluetooth = require("ui.bar.modules.bluetooth")
+local wifi = require("ui.bar.modules.wifi")
 
-
-local control = wibox.widget {
+local control = wibox.widget({
 	{
 		{
 			wifi,
@@ -22,11 +21,11 @@ local control = wibox.widget {
 	widget = wibox.container.background,
 	shape = helpers.mkroundedrect(),
 	bg = beautiful.dimblack,
-}
+})
 
 helpers.hover_widget(control)
 
-control:add_button(awful.button({}, 1, function ()
+control:add_button(awful.button({}, 1, function()
 	awesome.emit_signal("toggle::control")
 end))
 

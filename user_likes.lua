@@ -1,4 +1,4 @@
-local menubar = require "menubar"
+local menubar = require("menubar")
 
 terminal = "tabbed -c -k -b -r 2 st -w ''"
 explorer = "thunar"

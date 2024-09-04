@@ -1,2 +1,2 @@
-require 'ui.osd.volume'
-require 'ui.osd.brightness'
+require("ui.osd.volume")
+require("ui.osd.brightness")

@@ -1,27 +1,24 @@
 ---@diagnostic disable: undefined-global
-local wibox = require 'wibox'
-local beautiful = require 'beautiful'
-local awful = require 'awful'
+local wibox = require("wibox")
+local beautiful = require("beautiful")
+local awful = require("awful")
 
 -- local launchers = require 'ui.bar.modules.launchers'
-local gettaglist = require 'ui.bar.modules.tags'
-local systray_toggler = require 'ui.bar.modules.systray_toggler'
-local clock = require 'ui.bar.modules.date'
-local control = require 'ui.bar.modules.control'
-local clientinfo = require 'ui.bar.modules.client'
-local getlayoutbox = require 'ui.bar.modules.layoutbox'
-local battery = require 'ui.bar.modules.battery'
-local profile = require 'ui.bar.modules.profile'
-local music = require 'ui.bar.modules.music'
-local helpers = require 'helpers'
+local gettaglist = require("ui.bar.modules.tags")
+local systray_toggler = require("ui.bar.modules.systray_toggler")
+local clock = require("ui.bar.modules.date")
+local control = require("ui.bar.modules.control")
+local clientinfo = require("ui.bar.modules.client")
+local getlayoutbox = require("ui.bar.modules.layoutbox")
+local battery = require("ui.bar.modules.battery")
+local profile = require("ui.bar.modules.profile")
+local music = require("ui.bar.modules.music")
+local helpers = require("helpers")
 
-screen.connect_signal('request::desktop_decoration', function(s)
-	awful.tag(
-		{ '1', '2', '3', '4', '5', '6', '7' },
-		s, awful.layout.layouts[1]
-	)
+screen.connect_signal("request::desktop_decoration", function(s)
+	awful.tag({ "1", "2", "3", "4", "5", "6", "7" }, s, awful.layout.layouts[1])
 
-	local search = wibox.widget {
+	local search = wibox.widget({
 		{
 			profile,
 			right = 4,
@@ -36,10 +33,10 @@ screen.connect_signal('request::desktop_decoration', function(s)
 		border_color = beautiful.light_black,
 		forced_width = 94,
 		bg = beautiful.dimblack,
-	}
+	})
 	helpers.hover_widget(search)
 
-	local systray = wibox.widget {
+	local systray = wibox.widget({
 		{
 			systray_toggler,
 			right = 5,
@@ -54,10 +51,10 @@ screen.connect_signal('request::desktop_decoration', function(s)
 		bg = beautiful.dimblack,
 		widget = wibox.container.background,
 		forced_width = 32,
-	}
+	})
 	helpers.hover_widget(systray)
 
-	local bar_content = wibox.widget {
+	local bar_content = wibox.widget({
 		bg = beautiful.bg_normal,
 		fg = beautiful.fg_normal,
 		type = "dock",
@@ -81,8 +78,8 @@ screen.connect_signal('request::desktop_decoration', function(s)
 						{
 							getlayoutbox(s),
 							widget = wibox.container.place,
-							halign = 'center',
-							valign = 'center',
+							halign = "center",
+							valign = "center",
 						},
 						widget = wibox.container.background,
 						shape = helpers.mkroundedrect(8),
@@ -97,8 +94,8 @@ screen.connect_signal('request::desktop_decoration', function(s)
 						{
 							gettaglist(s),
 							widget = wibox.container.place,
-							halign = 'center',
-							valign = 'center',
+							halign = "center",
+							valign = "center",
 						},
 						border_width = beautiful.border_widget,
 						border_color = beautiful.light_black,
@@ -185,13 +182,12 @@ screen.connect_signal('request::desktop_decoration', function(s)
 				shape = helpers.mkroundedrect(8),
 				border_width = beautiful.border_widget,
 				border_color = beautiful.light_black,
-
 			},
 			widget = wibox.container.place,
 		},
-	}
+	})
 
-	local bar = awful.popup {
+	local bar = awful.popup({
 		visible = true,
 		ontop = false,
 		minimum_width = s.geometry.width,
@@ -201,7 +197,7 @@ screen.connect_signal('request::desktop_decoration', function(s)
 		type = "dock",
 		widget = bar_content,
 		screen = s,
-	}
+	})
 
 	local function toggle_ontop(c)
 		if c.fullscreen then
@@ -216,11 +212,11 @@ screen.connect_signal('request::desktop_decoration', function(s)
 	client.connect_signal("property::floating", toggle_ontop)
 	client.connect_signal("property::fullscreen", toggle_ontop)
 
-	bar:struts {
+	bar:struts({
 		top = beautiful.bar_height,
 		-- top = beautiful.bar_height + beautiful.useless_gap * 2,
 		-- left = beautiful.useless_gap * 2,
 		-- right = beautiful.useless_gap * 2,
 		-- bottom = beautiful.useless_gap * 2,
-	}
+	})
 end)

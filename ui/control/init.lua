@@ -22,10 +22,10 @@ awful.screen.connect_for_each_screen(function()
 		visible = false,
 		border_width = beautiful.border_widget,
 		border_color = beautiful.grey,
-		type = "utility"
+		type = "utility",
 	})
 
-	control:setup {
+	control:setup({
 		{
 			{
 				{
@@ -33,79 +33,78 @@ awful.screen.connect_for_each_screen(function()
 						widget = wibox.container.margin,
 						top = 10,
 					},
-                    {
-                        {
-                            {
-                                widget = wibox.widget.imagebox,
-                                image = beautiful.pfp,
-                                forced_height = 58,
-                                opacity = 1,
-                                forced_width = 58,
-                                clip_shape = helpers.mkroundedrect(80),
-                                resize = true,
-                                top = 10,
-                                valign = "center",
-                                halign = "center",
-                            },
-                            forced_width = 86,
-                            widget = wibox.container.margin,
-                        },
-                        {
-                            {
-                                markup = "nytou@void",
-                                font = beautiful.font_name .. " Bold 14",
-                                widget = wibox.widget.textbox,
-                                valign = "center",
-                                halign = "left",
-                            },
-                            {
-                                uptime,
-                                widget = wibox.container.margin,
-                                valign = "center",
-                                halign = "left",
-                                top = 6,
-                                bottom = 4
-                            },
-                            {
-                                battery,
-                                widget = wibox.container.place,
-                                valign = "center",
-                                halign = "left",
-                            },
-                            layout = wibox.layout.align.vertical,
-                            widget = wibox.container.margin,
-                        },
-                        {
-                            header_buttons,
-                            widget = wibox.container.margin,
-                            halign = "right",
-                        },
-                        layout = wibox.layout.align.horizontal,
-                        widget = wibox.container.margin,
-                    },
-                    {
-                        {
-                            sliders,
-                            top = 20,
-                            bottom = 20,
-                            left = 20,
-                            right = 20,
-                            widget = wibox.container.margin,
-                        },
-                        bg = beautiful.dimblack .. "aa",
-                        shape = helpers.mkroundedrect(beautiful.border_radius),
-                        widget = wibox.container.background,
-                        border_width = beautiful.border_widget,
-                        border_color = beautiful.light_black,
-                    },
-                    buttons,
+					{
+						{
+							{
+								widget = wibox.widget.imagebox,
+								image = beautiful.pfp,
+								forced_height = 58,
+								opacity = 1,
+								forced_width = 58,
+								clip_shape = helpers.mkroundedrect(80),
+								resize = true,
+								top = 10,
+								valign = "center",
+								halign = "center",
+							},
+							forced_width = 86,
+							widget = wibox.container.margin,
+						},
+						{
+							{
+								markup = "nytou@void",
+								font = beautiful.font_name .. " Bold 14",
+								widget = wibox.widget.textbox,
+								valign = "center",
+								halign = "left",
+							},
+							{
+								uptime,
+								widget = wibox.container.margin,
+								valign = "center",
+								halign = "left",
+								top = 6,
+								bottom = 4,
+							},
+							{
+								battery,
+								widget = wibox.container.place,
+								valign = "center",
+								halign = "left",
+							},
+							layout = wibox.layout.align.vertical,
+							widget = wibox.container.margin,
+						},
+						{
+							header_buttons,
+							widget = wibox.container.margin,
+							halign = "right",
+						},
+						layout = wibox.layout.align.horizontal,
+						widget = wibox.container.margin,
+					},
+					{
+						{
+							sliders,
+							top = 20,
+							bottom = 20,
+							left = 20,
+							right = 20,
+							widget = wibox.container.margin,
+						},
+						bg = beautiful.dimblack .. "aa",
+						shape = helpers.mkroundedrect(beautiful.border_radius),
+						widget = wibox.container.background,
+						border_width = beautiful.border_widget,
+						border_color = beautiful.light_black,
+					},
+					buttons,
 					layout = wibox.layout.fixed.vertical,
 					spacing = 16,
 				},
 				widget = wibox.container.margin,
 				left = 20,
 				right = 20,
-
 			},
 			widget = wibox.container.background,
 			bg = beautiful.bg_normal,
@@ -113,7 +112,7 @@ awful.screen.connect_for_each_screen(function()
 			bottom = 10,
 		},
 		layout = wibox.layout.align.vertical,
-	}
+	})
 	awful.placement.top_right(control, { honor_workarea = true, margins = 12 })
 
 	awesome.connect_signal("toggle::control", function()

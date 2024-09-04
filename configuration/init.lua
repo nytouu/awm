@@ -1,11 +1,11 @@
-require "configuration.theme"
-require "configuration.layouts"
-require "configuration.mousebindings"
-require "configuration.keybindings"
-require "configuration.rules"
-require "configuration.autofocus"
-require "configuration.floating-clients"
-require "configuration.monitor"
-require 'configuration.music-notification'
-require 'configuration.focusurgent'
-require 'configuration.floating-ontop'
+require("configuration.theme")
+require("configuration.layouts")
+require("configuration.mousebindings")
+require("configuration.keybindings")
+require("configuration.rules")
+require("configuration.autofocus")
+require("configuration.floating-clients")
+require("configuration.monitor")
+require("configuration.music-notification")
+require("configuration.focusurgent")
+require("configuration.floating-ontop")

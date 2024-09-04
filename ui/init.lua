@@ -1,17 +1,17 @@
 ---@diagnostic disable: undefined-global
-require 'ui.notifications'
-require 'ui.wallpaper'
-require 'ui.desktop'
-require 'ui.menu'
-require 'ui.decorations'
-require 'ui.bar'
-require 'ui.systray'
-require 'ui.powermenu'
-require 'ui.calendar'
-require 'ui.dock'
-require 'ui.music'
-require 'ui.musicwidget'
-require 'ui.lock'
-require 'ui.control'
-require 'ui.osd'
-require 'ui.other'
+require("ui.notifications")
+require("ui.wallpaper")
+require("ui.desktop")
+require("ui.menu")
+require("ui.decorations")
+require("ui.bar")
+require("ui.systray")
+require("ui.powermenu")
+require("ui.calendar")
+require("ui.dock")
+require("ui.music")
+require("ui.musicwidget")
+require("ui.lock")
+require("ui.control")
+require("ui.osd")
+require("ui.other")

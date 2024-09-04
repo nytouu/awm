@@ -1,18 +1,18 @@
 ---@diagnostic disable: undefined-global
-local awful = require 'awful'
+local awful = require("awful")
 
 local function _()
-    return awful.screen.focused().systray
+	return awful.screen.focused().systray
 end
 
-awesome.connect_signal('systray::toggle', function ()
-    _().toggle()
+awesome.connect_signal("systray::toggle", function()
+	_().toggle()
 end)
 
-awesome.connect_signal('systray::visibility', function (v)
-    if v then
-        _().show()
-    else
-        _().hide()
-    end
+awesome.connect_signal("systray::visibility", function(v)
+	if v then
+		_().show()
+	else
+		_().hide()
+	end
 end)

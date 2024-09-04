@@ -1,0 +1,33 @@
+@document.meta
+title: README
+description: awesomewm dotfiles
+authors: nytou
+categories: dots
+created: 2024-09-01T22:43:14+0100
+updated: 2024-09-01T22:43:14+0100
+version: 1.1.1
+@end
+
+* My awesome dotfiles
+  Those are my awesome dots
+  If you want to install those you can clone the repo :
+
+* Install
+
+  @code sh
+  mv ~/.config/awesome ~/.config/awesome-old #to backup your old config if you have one
+  git clone https://github.com/nytouu/awm.git ~/.config/awesome
+  @end
+
+  Then you will need to compile and generate a liblua_pam.so file if you want to 
+  use the lockscreen, go to {https://github.com/RMTT/lua-pam}[this repo], compile
+  and replace liblua_pam.so by your own.
+
+* Screenshots
+
+  .image https://raw.githubusercontent.com/nytouu/awm/master/night.png
+  @image
+  @end
+  .image https://raw.githubusercontent.com/nytouu/awm/master/widgets.png
+  .image https://raw.githubusercontent.com/nytouu/awm/master/day.png
+

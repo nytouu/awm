@@ -4,14 +4,14 @@ local helpers = require("helpers")
 local beautiful = require("beautiful")
 local awful = require("awful")
 
-local profile = wibox.widget {
+local profile = wibox.widget({
 	{
 		widget = wibox.widget.imagebox,
 		image = beautiful.logo,
 		forced_height = 24,
 		forced_width = 24,
-		valign = 'center',
-		halign = 'center',
+		valign = "center",
+		halign = "center",
 		clip_shape = helpers.mkroundedrect(40),
 		resize = true,
 	},
@@ -20,11 +20,11 @@ local profile = wibox.widget {
 		markup = helpers.colorize_text("Search", beautiful.fg_normal),
 		widget = wibox.widget.textbox,
 		valign = "center",
-		align = "center"
+		align = "center",
 	},
 	layout = wibox.layout.align.horizontal,
 	widget = wibox.container.margin,
-}
+})
 
 helpers.hover_widget(profile)
 

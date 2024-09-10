@@ -6,8 +6,8 @@ local gears = require("gears")
 local bling = require("modules.bling")
 local helpers = require("helpers")
 local playerctl = bling.signal.playerctl.lib({
-	-- ignore = "firefox",
-	-- player = {"mpd", "%any"}
+	ignore = "firefox",
+	player = {"mpd", "%any"}
 })
 local art = wibox.widget({
 	image = helpers.cropSurface(5.8, gears.surface.load_uncached(beautiful.fallback_music)),
@@ -17,10 +17,6 @@ local art = wibox.widget({
 	forced_width = dpi(200),
 	widget = wibox.widget.imagebox,
 })
-playerctl:connect_signal("metadata", function(_, title, artist, album_path, album, new, player_name)
-	-- Set art widget
-	art.image = helpers.cropSurface(5.8, gears.surface.load_uncached(album_path))
-end)
 local next = wibox.widget({
 	align = "center",
 	font = beautiful.nerd_font .. " 14",
@@ -67,6 +63,32 @@ local headset = wibox.widget({
 	widget = wibox.widget.textbox,
 })
 
+local headset_tooltip = helpers.make_popup_tooltip("song", function(d)
+	return awful.placement.top_right(d, {
+		honor_workarea = true,
+		margins = {
+			right = 120,
+			top = beautiful.useless_gap,
+		},
+	})
+end)
+headset_tooltip.attach_to_object(headset)
+
+playerctl:connect_signal("metadata", function(_, title, artist, album_path, album, new, player_name)
+	-- Set art widget
+	art.image = helpers.cropSurface(5.8, gears.surface.load_uncached(album_path))
+
+	-- Popup text
+	if string.len(title) > 30 then
+		title = string.sub(title, 0, 30) .. "..."
+	end
+	if string.len(artist) > 22 then
+		artist = string.sub(artist, 0, 22) .. "..."
+	end
+
+	headset_tooltip.widget.text = title .. " - " .. artist .. "\n" .. player_name
+end)
+
 local finalwidget = wibox.widget({
 	{
 		art,
@@ -109,10 +131,6 @@ end))
 
 finalwidget:add_button(awful.button({}, 5, function()
 	awful.spawn("playerctl volume 0.02-")
-end))
-
-headset:add_button(awful.button({}, 1, function()
-	awesome.emit_signal("toggle::music")
 end))
 
 return finalwidget

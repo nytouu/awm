@@ -71,13 +71,6 @@ local function gen()
 		entries,
 		{ icon = appicons .. "places/trashcan_empty.svg", label = "Trash", exec = "thunar trash:/", type = "general" }
 	)
-	--  table.insert(entries,
-	--    {
-	--      icon = gears.filesystem.get_configuration_dir() .. "theme/assets/tsukkisaidmetoaddthis.png",
-	--      label = beautiful.user:lower(),
-	--      exec = "nemo /home/" .. beautiful.user:lower(),
-	--      type = "general"
-	--    })
 	for entry in io.popen([[ls ~/docs/desktop | sed '']]):lines() do
 		local label = entry
 		local exec = nil

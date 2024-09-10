@@ -3,7 +3,7 @@ local wibox = require("wibox")
 local helpers = require("helpers")
 local beautiful = require("beautiful")
 
-local createButton = function(cmd, icon, name, labelConnected, labelDisconnected, signal)
+local createButton = function(cmd, cmd2, icon, name, labelConnected, labelDisconnected, signal)
 	local widget = wibox.widget({
 		{
 			{
@@ -54,9 +54,14 @@ local createButton = function(cmd, icon, name, labelConnected, labelDisconnected
 		bg = beautiful.dimblack,
 		border_width = beautiful.border_widget,
 		border_color = beautiful.light_black,
-		buttons = { awful.button({}, 1, function()
-			awful.spawn.with_shell(cmd)
-		end) },
+		buttons = {
+			awful.button({}, 1, function()
+				awful.spawn.with_shell(cmd)
+			end),
+			awful.button({}, 3, function()
+				awful.spawn.with_shell(cmd2)
+			end),
+		},
 	})
 
 	awesome.connect_signal("signal::" .. signal, function(status)
@@ -82,6 +87,7 @@ local widget = wibox.widget({
 	{
 		createButton(
 			"~/.config/awesome/scripts/wifi --toggle",
+			"connman-gtk",
 			"󰤨 ",
 			"<b>Network</b>",
 			"Connected",
@@ -90,6 +96,7 @@ local widget = wibox.widget({
 		),
 		createButton(
 			"~/.config/awesome/scripts/bluetooth --toggle",
+			"blueman-manager",
 			"󰂯 ",
 			"<b>Bluetooth</b>",
 			"Connected",
@@ -102,6 +109,7 @@ local widget = wibox.widget({
 	{
 		createButton(
 			"~/.config/awesome/scripts/airplane --toggle",
+			"",
 			"󰀝 ",
 			"<b>Airplane Mode</b>",
 			"Now In Flight Mode",
@@ -110,6 +118,7 @@ local widget = wibox.widget({
 		),
 		createButton(
 			"awesome-client 'naughty = require(\"naughty\") naughty.toggle()'",
+			"",
 			"󰍶 ",
 			"<b>Do Not Disturb</b>",
 			"Turned On",
@@ -122,13 +131,14 @@ local widget = wibox.widget({
 	{
 		createButton(
 			"sh -c '[ ! $(pgrep picom) ] && picom || pkill picom'",
+			"",
 			"󰘷 ",
 			"<b>Compositor</b>",
 			"Enabled",
 			"Disabled",
 			"compositor"
 		),
-		createButton("pamixer --source 0 -t", "󰍬 ", "<b>Microphone</b>", "Microphone Muted", "Microphone On", "mic"),
+		createButton("daynight", "", " ", "<b>Theme</b>", "Light Theme", "Dark Theme", "theme"),
 		spacing = 20,
 		layout = wibox.layout.flex.horizontal,
 	},

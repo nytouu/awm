@@ -32,7 +32,7 @@ local info = wibox.widget({
 			widget = wibox.widget.progressbar,
 			id = "progressbar",
 			max_value = 100,
-			shape = helpers.mkroundedrect(8),
+			shape = helpers.mkroundedrect(beautiful.border_radius),
 			forced_width = 380,
 			forced_height = 10,
 			background_color = beautiful.dimblack,
@@ -49,7 +49,7 @@ local osd = awful.popup({
 	maximum_height = 60,
 	minimum_width = 290,
 	maximum_width = 290,
-	shape = helpers.mkroundedrect(6),
+	shape = helpers.mkroundedrect(beautiful.border_radius),
 	placement = function(d)
 		awful.placement.bottom(d, { margins = 20, honor_workarea = true })
 	end,

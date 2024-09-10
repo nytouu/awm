@@ -13,7 +13,7 @@ local uptime = require("ui.control.modules.uptime")
 
 awful.screen.connect_for_each_screen(function()
 	local control = wibox({
-		shape = helpers.mkroundedrect(10),
+		shape = helpers.mkroundedrect(beautiful.border_radius),
 		screen = screen.primary,
 		width = 440,
 		height = 452,
@@ -108,7 +108,7 @@ awful.screen.connect_for_each_screen(function()
 			},
 			widget = wibox.container.background,
 			bg = beautiful.bg_normal,
-			shape = helpers.mkroundedrect(12),
+			shape = helpers.mkroundedrect(beautiful.border_radius),
 			bottom = 10,
 		},
 		layout = wibox.layout.align.vertical,

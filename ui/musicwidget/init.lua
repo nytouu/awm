@@ -13,7 +13,7 @@ local art = wibox.widget({
 	image = helpers.cropSurface(1.71, gears.surface.load_uncached(beautiful.fallback_music)),
 	opacity = 0.3,
 	resize = true,
-	clip_shape = helpers.mkroundedrect(12),
+	clip_shape = helpers.mkroundedrect(beautiful.border_radius),
 	widget = wibox.widget.imagebox,
 })
 local next = wibox.widget({
@@ -57,7 +57,7 @@ end)
 
 awful.screen.connect_for_each_screen(function(s)
 	local music = wibox({
-		shape = helpers.mkroundedrect(8),
+		shape = helpers.mkroundedrect(beautiful.border_radius),
 		screen = screen.primary,
 		width = 400,
 		height = 200,
@@ -84,7 +84,7 @@ awful.screen.connect_for_each_screen(function(s)
 						to = { 250, 0 },
 						stops = { { 0, beautiful.bg_normal .. "ff" }, { 1, beautiful.dimblack .. "55" } },
 					},
-					shape = helpers.mkroundedrect(12),
+					shape = helpers.mkroundedrect(beautiful.border_radius),
 					widget = wibox.container.background,
 					border_width = beautiful.border_widget,
 					border_color = beautiful.light_black,
@@ -136,7 +136,7 @@ awful.screen.connect_for_each_screen(function(s)
 						left = 20,
 						right = 20,
 					},
-					shape = helpers.mkroundedrect(12),
+					shape = helpers.mkroundedrect(beautiful.border_radius),
 					widget = wibox.container.background,
 					bg = beautiful.dimblack,
 					border_width = beautiful.border_widget,

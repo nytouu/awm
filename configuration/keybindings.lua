@@ -11,19 +11,12 @@ local function set_keybindings()
 		awful.key({ modkey }, "Return", function()
 			awful.spawn(terminal)
 		end, { description = "open a terminal", group = "launcher" }),
-		-- awful.key(
-		--     { modkey, "Shift" }, 'd',
-		--     function ()
-		--         awesome.emit_signal('toggle::dashboard')
-		--     end,
-		--     { description = 'toggle the dashboard', group = 'launcher '}
-		-- ),
+		awful.key({ modkey, "Shift" }, "d", function()
+			awesome.emit_signal("toggle::dashboard")
+		end, { description = "toggle the dashboard", group = "launcher " }),
 		awful.key({ modkey }, "c", function()
 			awesome.emit_signal("toggle::control")
 		end, { description = "toggle control", group = "launcher" }),
-		awful.key({ modkey, "Shift" }, "n", function()
-			awesome.emit_signal("notifcenter::toggle")
-		end, { description = "toggle the notifcenter", group = "launcher" }),
 		awful.key({ modkey }, "d", function()
 			awful.spawn(launcher)
 		end, { description = "Open rofi", group = "launcher" }),
@@ -70,9 +63,6 @@ local function set_keybindings()
 		awful.key({ modkey, "Shift" }, "r", function()
 			awful.spawn("dmenurecord")
 		end, { description = "slop screenshot", group = "utils" }),
-		awful.key({ modkey, "Shift" }, "d", function()
-			naughty.toggle()
-		end, { description = "toggle notifications", group = "utils" }),
 		awful.key({ modkey, "Shift" }, "c", function()
 			awful.spawn("sh -c '[ ! $(pgrep picom) ] && picom || pkill picom'")
 		end, { description = "toggle compositor", group = "utils" }),
@@ -94,15 +84,23 @@ local function set_keybindings()
 			awful.spawn("xkill")
 		end, { description = "kill window", group = "utils" }),
 
+		awful.key({ "Mod1" }, "Tab", function()
+			awful.spawn("skippy-xd --switch --next")
+		end, { description = "alt tab", group = "utils" }),
+		awful.key({ "Mod1", "Shift" }, "Tab", function()
+			awful.spawn("skippy-xd --switch --prev")
+		end, { description = "alt tab reversed", group = "utils" }),
+
+
 		-- music
 		awful.key({}, "XF86AudioPrev", function()
-			awful.spawn("mpc prev")
+			awful.spawn("playerctl previous")
 		end, { description = "previous song", group = "music" }),
 		awful.key({}, "XF86AudioNext", function()
-			awful.spawn("mpc next")
+			awful.spawn("playerctl next")
 		end, { description = "next song", group = "music" }),
 		awful.key({}, "XF86AudioPlay", function()
-			awful.spawn("mpc toggle")
+			awful.spawn("playerctl play-pause")
 		end, { description = "toggle mute", group = "music" }),
 		awful.key({ "Shift" }, "XF86AudioRaiseVolume", function()
 			awful.spawn("mpc volume +2")
@@ -136,11 +134,9 @@ local function set_keybindings()
 				client.focus:raise()
 			end
 		end, { description = "go back", group = "client" }),
-		awful.key({ modkey, "Shift" }, "v", function()
+		awful.key({ modkey }, "v", function()
 			awful.screen.focus_relative(1)
 		end, { description = "focus the next screen", group = "screen" }),
-		-- awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
-		--           {description = "focus the previous screen", group = "screen"}),
 	})
 
 	-- Layout related keybindings
@@ -269,8 +265,9 @@ local function set_keybindings()
 			awful.key({ modkey, "Shift" }, "Return", function(c)
 				c:swap(awful.client.getmaster())
 			end, { description = "move to master", group = "client" }),
-			-- awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
-			--         {description = "move to screen", group = "client"}),
+			awful.key({ modkey, "Shift" }, "v", function(c)
+				c:move_to_screen()
+			end, { description = "move to screen", group = "client" }),
 			awful.key({ modkey }, "s", function(c)
 				c.sticky = not c.sticky
 			end, { description = "toggle sticky", group = "client" }),

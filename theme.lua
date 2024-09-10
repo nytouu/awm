@@ -153,7 +153,7 @@ theme.titlebar_minimize_button_normal = gears.color.recolor_image(titlebar_asset
 theme.titlebar_minimize_button_focus = gears.color.recolor_image(titlebar_assets_path .. "circle.png", theme.yellow)
 
 -- wallpaper
-theme.wallpaper = assets_path .. "wallpaper.png"
+theme.wallpaper = colors.wallpaper
 
 -- layouts
 theme.layout_fairh = gears.color.recolor_image(themes_path .. "default/layouts/fairhw.png", theme.fg_normal)
@@ -221,5 +221,7 @@ theme.tag_preview_widget_margin = dpi(7)
 -- tooltip
 theme.tooltip_bg = theme.bg_normal
 theme.tooltip_fg = theme.fg_normal
+
+theme.separator_color = theme.grey
 
 return theme

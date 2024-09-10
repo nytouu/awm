@@ -203,7 +203,7 @@ local dock = function()
 			{
 				name = "nvim",
 				convert = "nvim",
-				command = terminal .. " nvim",
+				command = "tabbed -c -k -b -r 2 st -w '' -c nvim nvim",
 			},
 			{
 				name = "tabbed",
@@ -365,8 +365,8 @@ local dock = function()
 				count = 0,
 				id = 5,
 				clients = {},
-				name = "planify",
-				class = "planify",
+				name = "nvim",
+				class = "nvim",
 			},
 			{
 				count = 0,

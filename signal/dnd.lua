@@ -1,6 +1,6 @@
 local gears = require("gears")
 local naughty = require("naughty")
--- Network Fetching and Signal Emitting
+-- Do not disturb
 ---------------------------------------
 local function emit_dnd_status()
 	local status = naughty.is_suspended()

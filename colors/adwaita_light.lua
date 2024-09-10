@@ -1,3 +1,6 @@
+local gfs = require("gears.filesystem")
+local assets_path = gfs.get_configuration_dir() .. "assets/"
+
 local colors = {}
 
 -- base colors
@@ -22,5 +25,7 @@ colors.bg_alt = "#bbbbbb"
 colors.normal = "#555555"
 colors.focus = "#cecece"
 colors.marked = "#93DDC2"
+
+colors.wallpaper = assets_path .. "wallpaper_light.png"
 
 return colors

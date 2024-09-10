@@ -10,12 +10,12 @@ local gears = require("gears")
 -- naughty config
 naughty.config.defaults.ontop = true
 naughty.config.defaults.screen = awful.screen.focused()
-naughty.config.defaults.timeout = 3
+naughty.config.defaults.timeout = 4
 naughty.config.defaults.title = "Notification"
-naughty.config.defaults.position = "top_middle"
+naughty.config.defaults.position = "top_right"
 
 -- Timeouts
-naughty.config.presets.low.timeout = 3
+naughty.config.presets.low.timeout = 4
 naughty.config.presets.critical.timeout = 0
 
 -- naughty normal preset

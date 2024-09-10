@@ -48,7 +48,7 @@ local clock_container = wibox.widget({
 helpers.hover_widget(clock_container)
 
 clock_container:add_button(awful.button({}, 1, function()
-	awesome.emit_signal("toggle::calendar")
+	awesome.emit_signal("toggle::dashboard")
 end))
 
 return clock_container

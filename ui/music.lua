@@ -14,7 +14,7 @@ local dpi = beautiful.xresources.apply_dpi
 
 local art = wibox.widget({
 	image = beautiful.fallback_music,
-	clip_shape = helpers.mkroundedrect(10),
+	clip_shape = helpers.mkroundedrect(beautiful.border_radius),
 	opacity = 0.75,
 	resize = true,
 	forced_height = dpi(60),
@@ -24,7 +24,7 @@ local art = wibox.widget({
 })
 local leftart = wibox.widget({
 	image = beautiful.fallback_music,
-	clip_shape = helpers.mkroundedrect(10),
+	clip_shape = helpers.mkroundedrect(beautiful.border_radius),
 	opacity = 0.75,
 	resize = true,
 	forced_height = dpi(250),
@@ -259,7 +259,7 @@ local bottom = function(c)
 							margins = 4,
 							widget = wibox.container.margin,
 						},
-						shape = helpers.mkroundedrect(12),
+						shape = helpers.mkroundedrect(beautiful.border_radius),
 						bg = beautiful.blue .. "11",
 						widget = wibox.container.background,
 					},

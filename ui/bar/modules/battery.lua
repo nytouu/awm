@@ -1,6 +1,7 @@
 ---@diagnostic disable: undefined-global
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+local awful = require("awful")
 local helpers = require("helpers")
 local dpi = beautiful.xresources.apply_dpi
 
@@ -78,7 +79,7 @@ local battery_tooltip = helpers.make_popup_tooltip("-1%", function(d)
 		honor_workarea = true,
 		margins = {
 			right = beautiful.useless_gap,
-			top = beautiful.useless_gap * 2,
+			top = beautiful.useless_gap,
 		},
 	})
 end)

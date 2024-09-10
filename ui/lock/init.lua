@@ -60,7 +60,6 @@ local promptbox = wibox({
 	height = dpi(800),
 	bg = beautiful.dimblack .. "00",
 	ontop = true,
-	shape = helpers.mkroundedrect(10),
 	visible = false,
 	type = "splash",
 	screen = screen.primary,
@@ -76,6 +75,7 @@ local background = wibox({
 })
 
 awful.placement.centered(background)
+awful.placement.centered(promptbox)
 
 local visible = function(v)
 	background.visible = v
@@ -167,8 +167,6 @@ local back = wibox.widget({
 	image = beautiful.wallpaper,
 	widget = wibox.widget.imagebox,
 	forced_height = 1080,
-	-- horizontal_fit_policy = "fit",
-	-- vertical_fit_policy = "fit",
 	forced_width = 1920,
 })
 

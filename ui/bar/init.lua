@@ -214,9 +214,5 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
 	bar:struts({
 		top = beautiful.bar_height,
-		-- top = beautiful.bar_height + beautiful.useless_gap * 2,
-		-- left = beautiful.useless_gap * 2,
-		-- right = beautiful.useless_gap * 2,
-		-- bottom = beautiful.useless_gap * 2,
 	})
 end)

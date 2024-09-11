@@ -37,7 +37,7 @@ local header = wibox.widget({
 	halign = "center",
 })
 local label = wibox.widget({
-	markup = "Type The Password",
+	markup = "",
 	valign = "center",
 	halign = "center",
 	id = "name",
@@ -48,7 +48,7 @@ local label = wibox.widget({
 local check_caps = function()
 	awful.spawn.easy_async_with_shell("xset q | grep Caps | cut -d: -f3 | cut -d0 -f1 | tr -d ' '", function(stdout)
 		if stdout:match("off") then
-			label.markup = "Type The Password Here"
+			label.markup = ""
 		else
 			label.markup = "<b>HINT</b>: Caps Lock Is ON"
 		end
@@ -197,6 +197,13 @@ promptbox:setup({
 		{
 			{
 				{
+                    {
+                        text = "󰍁",
+                        font = beautiful.nerd_font .. " 38",
+                        halign = "center",
+                        valign = "center",
+						widget = wibox.widget.textbox,
+                    },
 					{
 						font = beautiful.font_name .. " 110",
 						format = "<b>%H:%M</b>",
@@ -216,7 +223,7 @@ promptbox:setup({
 						widget = wibox.container.margin,
 						top = 50,
 					},
-					spacing = 10,
+					spacing = 20,
 					layout = wibox.layout.fixed.vertical,
 				},
 				widget = wibox.container.place,

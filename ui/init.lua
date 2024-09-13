@@ -1,7 +1,7 @@
 ---@diagnostic disable: undefined-global
 require("ui.notifications")
 require("ui.wallpaper")
-require("ui.desktop")
+-- require("ui.desktop")
 require("ui.menu")
 require("ui.decorations")
 require("ui.bar")

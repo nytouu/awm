@@ -10,7 +10,7 @@ awful.spawn("setxkbmap fr", false)
 
 awful.spawn.once("pipewire", false)
 awful.spawn.once("lxpolkit", false)
-awful.spawn.once("skipp-xd --start-daemon", false)
+awful.spawn.once("skippy-xd --start-daemon", false)
 -- awful.spawn.single_instance("pipewire-pulse", false)
 awful.spawn.once("zsh -c 'DOTNET_ROOT=/home/nytou/.dotnet otd-daemon'", false)
 awful.spawn.once(

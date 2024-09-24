@@ -1,7 +1,7 @@
 local xresources = require("beautiful.xresources")
 local gears = require("gears")
 local gfs = require("gears.filesystem")
-local colors = require("colors.adwaita_dark")
+local colors = require("colors.adwaita_light")
 local helpers = require("helpers")
 
 local dpi = xresources.apply_dpi
@@ -78,8 +78,8 @@ theme.actions = {
 theme.bar_height = 38
 
 -- borders
-theme.border_width = dpi(2)
-theme.border_widget = dpi(2)
+theme.border_width = dpi(1)
+theme.border_widget = dpi(1)
 -- theme.border_color_normal = theme.bg_normal
 -- theme.border_color_active = theme.bg_normal
 -- theme.border_color_marked = theme.bg_normal
@@ -188,7 +188,7 @@ theme.network_disconnected = "󰖪 "
 
 -- pfp
 theme.pfp = assets_path .. "pfp.png"
-theme.logo = assets_path .. "void.png"
+theme.logo = assets_path .. "nixos.png"
 
 -- fallback music
 theme.fallback_music = assets_path .. "fallback-music.png"
@@ -197,7 +197,8 @@ theme.fallback_music = assets_path .. "fallback-music.png"
 theme.fallback_notif_icon = gears.color.recolor_image(icons_path .. "hints.svg", theme.blue)
 
 -- theme.icon_theme = "~/.local/share/icons/Colloid/"
-theme.icon_theme = "/usr/share/icons/Papirus-Dark/24x24"
+-- theme.icon_theme = "/usr/share/icons/Papirus-Dark/24x24"
+theme.icon_theme = "/nix/store/66vqx3cccl1iqbipqv0c991g7bwxchxr-papirus-icon-theme-20240501/share/icons/Papirus-Dark/24x24"
 
 -- task preview
 theme.task_preview_widget_border_radius = dpi(7)

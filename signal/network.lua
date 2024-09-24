@@ -4,7 +4,7 @@ local gears = require("gears")
 -- Network Fetching and Signal Emitting
 ---------------------------------------
 local function emit_network_status()
-	awful.spawn.easy_async_with_shell("sh -c 'connmanctl technologies | grep Powered | sed \"3!d\"'", function(stdout)
+	awful.spawn.easy_async_with_shell("sh -c 'connmanctl technologies | grep Powered | sed \"2!d\"'", function(stdout)
 		local status = stdout:match("True") -- boolean
 		awesome.emit_signal("signal::network", status)
 	end)

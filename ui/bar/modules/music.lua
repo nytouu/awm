@@ -76,7 +76,7 @@ headset_tooltip.attach_to_object(headset)
 
 playerctl:connect_signal("metadata", function(_, title, artist, album_path, album, new, player_name)
 	-- Set art widget
-	art.image = helpers.cropSurface(5.8, gears.surface.load_uncached(album_path))
+	-- art.image = helpers.cropSurface(5.8, gears.surface.load_uncached(album_path))
 
 	-- Popup text
 	if string.len(title) > 30 then

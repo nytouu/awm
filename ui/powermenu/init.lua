@@ -145,10 +145,10 @@ awful.screen.connect_for_each_screen(function()
 	local buttons = wibox.widget({
 
 		{
-			createButton("󰐥 ", "Power", "loginctl poweroff", beautiful.red),
-			createButton("󰦛 ", "Reboot", "loginctl reboot", beautiful.green),
+			createButton("󰐥 ", "Power", "poweroff", beautiful.red),
+			createButton("󰦛 ", "Reboot", "reboot", beautiful.green),
 			createButton("󰌾 ", "Lock", "lock", beautiful.blue),
-			createButton("󰖔 ", "Sleep", "lock && sleep 0.2 && loginctl suspend", beautiful.yellow),
+			createButton("󰖔 ", "Sleep", "lock && sleep 0.2 && systemctl suspend", beautiful.yellow),
 			createButton("󰈆 ", "Log Out", "loginctl kill-user $USER", beautiful.magenta),
 			layout = wibox.layout.fixed.horizontal,
 			spacing = 20,

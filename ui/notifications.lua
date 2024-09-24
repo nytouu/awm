@@ -12,7 +12,7 @@ naughty.config.defaults.ontop = true
 naughty.config.defaults.screen = awful.screen.focused()
 naughty.config.defaults.timeout = 4
 naughty.config.defaults.title = "Notification"
-naughty.config.defaults.position = "top_right"
+naughty.config.defaults.position = "top_middle"
 
 -- Timeouts
 naughty.config.presets.low.timeout = 4
@@ -20,7 +20,7 @@ naughty.config.presets.critical.timeout = 0
 
 -- naughty normal preset
 naughty.config.presets.normal = {
-	font = beautiful.font_name,
+	font = beautiful.font_name .. " 10",
 	fg = beautiful.fg_normal,
 	bg = beautiful.bg_normal,
 }
@@ -121,7 +121,7 @@ naughty.connect_signal("request::display", function(n)
 		{
 			{
 				markup = n.title,
-				font = beautiful.font_name .. "Bold 11",
+				font = beautiful.font_name .. " Bold 11",
 				align = "left",
 				valign = "center",
 				widget = wibox.widget.textbox,

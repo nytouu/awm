@@ -110,7 +110,7 @@ local widget = wibox.widget({
 					{
 						id = "icon",
 						image = gears.filesystem.get_configuration_dir()
-							.. "theme/assets/weather/icons/weather-fog.svg",
+							.. "assets/weather/icons/weather-fog.svg",
 						opacity = 0.9,
 						clip_shape = helpers.mkroundedrect(4),
 						forced_height = 80,

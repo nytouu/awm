@@ -29,7 +29,7 @@ nice({
 		right = { "maximize", "close" },
 	},
 	titlebar_font = beautiful.font_name .. " 12",
-	button_size = 12,
+	button_size = 14,
 
 	-- Swap the designated buttons for resizing, and opening the context menu
 	mb_resize = nice.MB_MIDDLE,

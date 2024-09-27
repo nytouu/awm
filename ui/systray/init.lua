@@ -27,7 +27,7 @@ awful.screen.connect_for_each_screen(function()
 		height = dimensions.height,
 		bg = beautiful.bg_normal .. "00",
 		fg = beautiful.fg_normal,
-		x = screen.primary.geometry.x + 1406,
+		x = screen.primary.geometry.x + 1626,
 		y = -2,
 	})
 
@@ -47,7 +47,7 @@ awful.screen.connect_for_each_screen(function()
 			margins = 12,
 			widget = wibox.container.margin,
 		},
-		bg = beautiful.bg_normal,
+		bg = beautiful.bg_normal .. "00",
 		fg = beautiful.fg_normal,
 		widget = wibox.container.background,
 	})

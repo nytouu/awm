@@ -5,7 +5,7 @@ local colors = {}
 
 -- base colors
 colors.black = "#fcfcfc"
-colors.dimblack = "#dddddd"
+colors.dimblack = "#e5e5e5"
 colors.light_black = "#cccccc"
 colors.grey = "#aaaaaa"
 colors.red = "#F66151"

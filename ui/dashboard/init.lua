@@ -4,7 +4,8 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 
 local calendar = require("ui.dashboard.mods.calendar")
-local weather = require("ui.dashboard.mods.weather")
+-- local weather = require("ui.dashboard.mods.weather")
+local notif_center = require("ui.dashboard.notif-center")
 
 require("ui.dashboard.listener")
 
@@ -12,7 +13,7 @@ awful.screen.connect_for_each_screen(function()
 	screen.primary.dashboard = {}
 
 	local dimensions = {
-		width = 780,
+		width = 700,
 		height = 310,
 	}
 
@@ -40,21 +41,21 @@ awful.screen.connect_for_each_screen(function()
 			bg = beautiful.bg_normal,
 			widget = wibox.container.background,
 		},
-		{
-			{
-				widget = wibox.widget.separator,
-				span_ratio = 0.8,
-				orientation = "vertical",
-				bg = beautiful.fg_normal,
-			},
-			bg = beautiful.bg_normal,
-			widget = wibox.container.background,
-		},
-		{
-			weather,
-			bg = beautiful.bg_normal,
-			widget = wibox.container.background,
-		},
+        {
+            {
+                {
+                    notif_center(screen.primary),
+                    bg = beautiful.bg_normal,
+                    widget = wibox.container.background,
+                },
+                widget = wibox.container.margin,
+                top = beautiful.useless_gap,
+                right = beautiful.useless_gap,
+                bottom = beautiful.useless_gap,
+            },
+            bg = beautiful.bg_normal,
+            widget = wibox.container.background,
+        },
 		layout = wibox.layout.align.horizontal,
 	})
 

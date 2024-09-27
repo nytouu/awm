@@ -2,21 +2,19 @@
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local awful = require("awful")
+local helpers = require("helpers")
 
--- local launchers = require 'ui.bar.modules.launchers'
 local gettaglist = require("ui.bar.modules.tags")
 local systray_toggler = require("ui.bar.modules.systray_toggler")
 local clock = require("ui.bar.modules.date")
 local control = require("ui.bar.modules.control")
-local clientinfo = require("ui.bar.modules.client")
 local getlayoutbox = require("ui.bar.modules.layoutbox")
 local battery = require("ui.bar.modules.battery")
 local profile = require("ui.bar.modules.profile")
-local music = require("ui.bar.modules.music")
-local helpers = require("helpers")
+local bell = require("ui.bar.modules.bell")
 
 screen.connect_signal("request::desktop_decoration", function(s)
-	awful.tag({ "1", "2", "3", "4", "5", "6", "7" }, s, awful.layout.layouts[1])
+	awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
 	local search = wibox.widget({
 		{
@@ -65,6 +63,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 			{
 				layout = wibox.layout.fixed.horizontal,
 				widget = wibox.container.place,
+				spacing = 6,
 				{
 					search,
 					left = 6,
@@ -74,45 +73,11 @@ screen.connect_signal("request::desktop_decoration", function(s)
 					widget = wibox.container.margin,
 				},
 				{
-					{
-						{
-							getlayoutbox(s),
-							widget = wibox.container.place,
-							halign = "center",
-							valign = "center",
-						},
-						widget = wibox.container.background,
-						shape = helpers.mkroundedrect(8),
-						bg = beautiful.bg_normal,
-						-- TODO: change here
-					},
-					right = 2,
-					widget = wibox.container.margin,
-				},
-				{
-					{
-						{
-							gettaglist(s),
-							widget = wibox.container.place,
-							halign = "center",
-							valign = "center",
-						},
-						border_width = beautiful.border_widget,
-						border_color = beautiful.light_black,
-						widget = wibox.container.background,
-						forced_height = 24,
-						forced_width = s.geometry.width / 7,
-						shape = helpers.mkroundedrect(8),
-						bg = beautiful.dimblack,
-						fg = beautiful.dimblack,
-					},
+					gettaglist(s),
 					widget = wibox.container.place,
+					halign = "center",
+					valign = "center",
 				},
-				-- {
-				-- 	clientinfo,
-				-- 	widget = wibox.container.margin,
-				-- 	left = 6,
-				-- },
 			},
 			nil,
 			{
@@ -121,21 +86,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
 						systray,
 						top = 4,
 						bottom = 4,
+						right = 4,
 						widget = wibox.container.margin,
-					},
-					{
-						{
-							{
-								music,
-								widget = wibox.container.place,
-							},
-							widget = wibox.container.background,
-							shape = helpers.mkroundedrect(8),
-							border_width = beautiful.border_widget,
-							border_color = beautiful.light_black,
-						},
-						widget = wibox.container.place,
-						forced_width = 210,
 					},
 					{
 						{
@@ -162,6 +114,12 @@ screen.connect_signal("request::desktop_decoration", function(s)
 						widget = wibox.container.margin,
 						forced_width = 40,
 					},
+					{
+						getlayoutbox(s),
+						widget = wibox.container.place,
+						border_width = beautiful.border_widget,
+						border_color = beautiful.light_black,
+					},
 					layout = wibox.layout.fixed.horizontal,
 				},
 				left = 4,
@@ -175,13 +133,21 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		{
 			{
 				{
-					clock,
+					{
+						clock,
+						widget = wibox.container.margin,
+					},
+					widget = wibox.container.background,
+					shape = helpers.mkroundedrect(8),
+					border_width = beautiful.border_widget,
+					border_color = beautiful.light_black,
+				},
+				{
+					bell,
+					left = 8,
 					widget = wibox.container.margin,
 				},
-				widget = wibox.container.background,
-				shape = helpers.mkroundedrect(8),
-				border_width = beautiful.border_widget,
-				border_color = beautiful.light_black,
+				layout = wibox.layout.fixed.horizontal,
 			},
 			widget = wibox.container.place,
 		},

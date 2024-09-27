@@ -30,7 +30,7 @@ local function gettaglist(s)
 			},
 			id = "background_role",
 			forced_width = 48,
-			forced_height = 14,
+			forced_height = 12,
 			widget = wibox.container.background,
 			create_callback = function(self, tag)
 				self.animate_width = rubato.timed({

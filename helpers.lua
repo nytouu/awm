@@ -688,6 +688,25 @@ helpers.hover_widget = function(widget)
 			end,
 		})
 	end)
+
+end
+
+helpers.add_hover_cursor = function(w, hover_cursor)
+	local original_cursor = "left_ptr"
+
+	w:connect_signal("mouse::enter", function()
+		local widget = capi.mouse.current_wibox
+		if widget then
+			widget.cursor = hover_cursor
+		end
+	end)
+
+	w:connect_signal("mouse::leave", function()
+		local widget = capi.mouse.current_wibox
+		if widget then
+			widget.cursor = original_cursor
+		end
+	end)
 end
 
 return helpers

@@ -36,6 +36,18 @@ end
 local widget = wibox.widget({
 	{
 		{
+			make_button("󰴱", 48, function()
+				awful.spawn("colorpicknotify")
+			end),
+			widget = wibox.container.place,
+		},
+		{
+			make_button("", 48, function()
+				awful.spawn("takescreenshot slop")
+			end),
+			widget = wibox.container.place,
+		},
+		{
 			make_button("󰈆", 48, function()
 				awesome.emit_signal("toggle::exit")
 			end),

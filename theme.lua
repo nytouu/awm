@@ -1,7 +1,7 @@
 local xresources = require("beautiful.xresources")
 local gears = require("gears")
 local gfs = require("gears.filesystem")
-local colors = require("colors.adwaita_light")
+local colors = require("colors.adwaita_dark")
 local helpers = require("helpers")
 
 local dpi = xresources.apply_dpi
@@ -114,8 +114,8 @@ theme.tasklist_bg_urgent = theme.red .. "4D" -- 30% of transparency
 -- taglist
 theme.taglist_bg = theme.bg_normal
 theme.taglist_bg_focus = theme.blue
-theme.taglist_bg_occupied = theme.grey
-theme.taglist_bg_empty = theme.black
+theme.taglist_bg_occupied = colors.focus
+theme.taglist_bg_empty = theme.dimblack
 
 -- systray
 theme.systray_icon_spacing = dpi(12)

@@ -49,7 +49,7 @@ local image_map = {
 	["50n"] = "weather-fog",
 }
 
-local api_key = "insert key here"
+local api_key = "eb72756ee487cca6f06ae7329d002d1d"
 local coordinates = { "48.117266", "-1.6777926" }
 
 local show_hourly_forecast = true

@@ -94,7 +94,7 @@ theme.border_inner = colors.focus
 theme.border_outer = colors.black
 
 -- gaps
-theme.useless_gap = dpi(12)
+theme.useless_gap = dpi(8)
 theme.gap_single_client = true
 
 -- edge snap

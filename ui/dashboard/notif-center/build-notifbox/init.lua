@@ -42,7 +42,7 @@ naughty.connect_signal("request::display", function(n)
 
 	local notif_icon = n.icon or n.app_icon
 	if not notif_icon then
-		notif_icon = beautiful.theme_assets.awesome_icon(24, beautiful.cyan, beautiful.bg_normal)
+		notif_icon = beautiful.logo
 	end
 
 	notifbox_add(n, notif_icon, notifbox_color)

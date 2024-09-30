@@ -41,9 +41,9 @@ local function gettaglist(s)
 				})
 				self.update = function()
 					if tag.selected then
-						self.animate_width.target = 28
+						self.animate_width.target = 36
 					elseif #tag:clients() > 0 then
-						self.animate_width.target = 16
+						self.animate_width.target = 18
 					else
 						self.animate_width.target = 12
 					end

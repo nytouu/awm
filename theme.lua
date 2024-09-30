@@ -198,7 +198,7 @@ theme.fallback_notif_icon = gears.color.recolor_image(icons_path .. "hints.svg",
 
 -- theme.icon_theme = "~/.local/share/icons/Colloid/"
 -- theme.icon_theme = "/usr/share/icons/Papirus-Dark/24x24"
-theme.icon_theme = "/nix/store/66vqx3cccl1iqbipqv0c991g7bwxchxr-papirus-icon-theme-20240501/share/icons/Papirus-Dark/24x24"
+theme.icon_theme = "/nix/store/n38q0fgxalak8254s6m6d2jfcahf4b9b-papirus-icon-theme-20240501/share/icons/Papirus-Dark/24x24"
 
 -- task preview
 theme.task_preview_widget_border_radius = dpi(7)

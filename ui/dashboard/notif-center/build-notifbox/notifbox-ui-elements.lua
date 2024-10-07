@@ -69,7 +69,7 @@ ui_notifbox_builder.notifbox_actions = function(n)
 				{
 					{
 						id = "text_role",
-						font = beautiful.font_name .. " 10",
+						font = beautiful.font_name .. " 13",
 						widget = wibox.widget.textbox,
 					},
 					widget = wibox.container.place,
@@ -95,7 +95,7 @@ ui_notifbox_builder.notifbox_dismiss = function()
 	local dismiss_textbox = wibox.widget({
 		{
 			id = "dismiss_icon",
-			font = beautiful.nerd_font .. " 10",
+			font = beautiful.nerd_font .. " Bold 10",
 			markup = helpers.colorize_text("", beautiful.red),
 			align = "center",
 			valign = "center",

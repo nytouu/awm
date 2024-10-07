@@ -219,7 +219,7 @@ local dock = function()
 			{
 				name = "osu!",
 				-- convert     = "osu-lazer",
-				command = "gtk-launch osu!",
+				command = "osu",
 			},
 			{
 				name = "rofi",
@@ -239,6 +239,16 @@ local dock = function()
 				command = "godot4",
 			},
 			{
+				name = "zen-alpha",
+				convert = "browser",
+				command = "zen",
+			},
+			{
+				name = "youtube music",
+				convert = "youtube-music",
+				command = "youtube-music",
+			},
+			{
 				name = "discord",
 				convert = "discord",
 				command = "Discord",
@@ -246,7 +256,7 @@ local dock = function()
 			{
 				name = "Unity",
 				convert = "unityhub",
-				command = "unityhub",
+				command = "nvidia-run unityhub",
 			},
 			{
 				name = "planify",
@@ -344,15 +354,15 @@ local dock = function()
 				count = 0,
 				id = 2,
 				clients = {},
-				name = "firefox",
-				class = "firefox",
+				name = "zen-alpha",
+				class = "zen-alpha",
 			},
 			{
 				count = 0,
 				id = 3,
 				clients = {},
-				name = "ncmpcpp",
-				class = "ncmpcpp",
+				name = "youtube music",
+				class = "youTube music",
 			},
 			{
 				count = 0,
@@ -403,12 +413,15 @@ local dock = function()
 			"st",
 			"firefox",
 			"librewolf",
+			"zen-alpha",
 			"discord",
 			"thunar",
 			"neorg",
 			"ncmpcpp",
 			"steam",
 			"unityhub",
+			"youtube music",
+			"YouTube Music",
 			"Unity",
 			"gimp",
 			"Gimp-2.10",

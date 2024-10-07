@@ -116,7 +116,7 @@ local function set_keybindings()
 			awful.spawn(browser)
 		end, { description = "open browser", group = "launcher" }),
 		awful.key({ modkey, "Shift" }, "m", function()
-			awful.spawn("st -c ncmpcpp -n ncmpcpp ncmpcpp")
+			awful.spawn(music_client)
 		end, { description = "open music", group = "launcher" }),
 	})
 

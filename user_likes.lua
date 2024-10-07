@@ -4,6 +4,7 @@ terminal = "tabbed -c -k -b -r 2 st -w ''"
 explorer = "thunar"
 browser = "firefox"
 launcher = "rofi -show drun"
+music_client = "youtube-music"
 editor = os.getenv("EDITOR") or "nvim"
 visual_editor = "code" -- vscode
 editor_cmd = terminal .. " -e " .. editor

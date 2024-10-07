@@ -27,4 +27,6 @@ bling.widget.tag_preview.enable({
 	}),
 })
 
+bling.module.flash_focus.enable()
+
 require("modules.better-resize")

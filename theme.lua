@@ -219,6 +219,10 @@ theme.tag_preview_widget_border_color = theme.bg_normal
 theme.tag_preview_widget_border_width = 2
 theme.tag_preview_widget_margin = dpi(7)
 
+-- flash focus
+theme.flash_focus_start_opacity = 0.88
+theme.flash_focus_step = 0.08
+
 -- tooltip
 theme.tooltip_bg = theme.bg_normal
 theme.tooltip_fg = theme.fg_normal

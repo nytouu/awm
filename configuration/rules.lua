@@ -92,7 +92,7 @@ local function setup_rules()
 			properties = { tag = "1" },
 		})
 		ruled.client.append_rule({
-			rule_any = { class = { "firefox", "librewolf" } },
+			rule_any = { class = { "firefox", "librewolf", "zen-alpha" } },
 			properties = { tag = "4" },
 		})
 		ruled.client.append_rule({

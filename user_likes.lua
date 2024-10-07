@@ -2,7 +2,7 @@ local menubar = require("menubar")
 
 terminal = "tabbed -c -k -b -r 2 st -w ''"
 explorer = "thunar"
-browser = "firefox"
+browser = "zen"
 launcher = "rofi -show drun"
 music_client = "youtube-music"
 editor = os.getenv("EDITOR") or "nvim"
